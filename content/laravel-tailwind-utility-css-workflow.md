@@ -26,4 +26,4 @@ Writing custom CSS classes for every UI component leads to bloated stylesheet fi
 
 - Eliminates named CSS class abstraction debates
 - Purges unused CSS styles automatically in production builds
-- Ensures consistent spacing, typography, and color tokens
+- makes sure consistent spacing, typography, and color tokens

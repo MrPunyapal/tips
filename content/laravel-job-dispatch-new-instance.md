@@ -23,5 +23,5 @@ dispatch(new ProcessReport($reportId));
 ```
 
 - Provides full static analysis parameter validation in PHPStan and Psalm
-- Ensures IDE auto-completes constructor parameters accurately
+- makes sure IDE auto-completes constructor parameters accurately
 - Avoids relying on magic __callStatic methods

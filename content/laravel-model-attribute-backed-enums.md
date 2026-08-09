@@ -10,7 +10,7 @@ author_url: "https://x.com/MrPunyapal"
 
 > Define PHP Backed Enums on model $casts to automatically hydrate strings and integers into typed Enums.
 
-Storing status strings like 'active' or 'pending' as raw strings leads to typos. Defining Backed Enums inside model $casts ensures typed enum object hydration.
+Storing status strings like 'active' or 'pending' as raw strings leads to typos. Defining Backed Enums inside model $casts makes sure typed enum object hydration.
 
 ```php
 namespace App\Models;

@@ -10,7 +10,7 @@ author_url: "https://x.com/MrPunyapal"
 
 > When you expect exactly one matching record, use sole() instead of firstOrFail(). It guards against multiple records by throwing MultipleRecordsFoundException.
 
-When querying unique records, firstOrFail() silently returns the first record even if multiple records match due to data integrity issues. sole() ensures exactly one record exists.
+When querying unique records, firstOrFail() silently returns the first record even if multiple records match due to data integrity issues. sole() makes sure exactly one record exists.
 
 ```php
 // Throws ModelNotFoundException if 0, MultipleRecordsFoundException if 2+

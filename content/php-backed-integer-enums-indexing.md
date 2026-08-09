@@ -32,4 +32,4 @@ enum Priority: int
 
 - Prevents false-y evaluation pitfalls when checking enum integer values in loose conditionals
 - Aligns with standard 1-based database primary key indexing conventions
-- Ensures empty() checks on enum raw values behave predictably
+- makes sure empty() checks on enum raw values behave predictably

@@ -26,4 +26,4 @@ class UserRegistered
 
 - Queued event listeners execute outside HTTP request cycles with no session context
 - Pass authenticated user models and contextual data inside Event constructors
-- Ensures event listeners are decoupled and safely queueable
+- makes sure event listeners are decoupled and safely queueable

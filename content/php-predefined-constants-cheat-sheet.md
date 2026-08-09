@@ -41,4 +41,4 @@ STDERR;              // Standard error stream
 
 - Always use `DIRECTORY_SEPARATOR` or forward slashes for cross-platform file paths
 - Use `PHP_OS_FAMILY` instead of checking `PHP_OS` strings
-- Magic constants resolve at compile time, ensuring minimal runtime overhead
+- Magic constants resolve at compile time, making sure minimal runtime overhead

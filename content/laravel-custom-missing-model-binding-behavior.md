@@ -32,4 +32,4 @@ Route::get('/posts/{post:slug}', [PostController::class, 'show'])
 
 - Customizes 404 fallback logic per individual route or resource
 - Prevents raw 404 exception screens for friendly user redirects
-- Works seamlessly with custom route binding columns like `{post:slug}`
+- Works directly with custom route binding columns like `{post:slug}`

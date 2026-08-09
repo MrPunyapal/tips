@@ -12,7 +12,7 @@ author_url: "https://x.com/MrPunyapal"
 
 Laravel provides helper functions for pushing jobs to workers or executing them synchronously in the current process.
 
-Understanding the difference ensures background operations execute at the right time:
+Understanding the difference makes sure background operations execute at the right time:
 
 ```php
 use App\Jobs\ProcessPdfExport;

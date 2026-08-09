@@ -21,4 +21,4 @@ $cleanHtml = $purifier->purify($input);
 
 - strip_tags() does not validate tag attributes or execution vectors
 - Always escape plain text with e() or Blade's {{ $var }}
-- For user-submitted rich text, use robust HTML sanitizers like HTMLPurifier
+- For user-submitted rich text, use reliable HTML sanitizers like HTMLPurifier
