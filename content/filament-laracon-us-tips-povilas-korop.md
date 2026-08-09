@@ -1,32 +1,40 @@
 ---
 category: "Laravel"
-tags: ["Laravel", "Filament", "TALL Stack"]
+tags: ["Laravel", "Filament", "Livewire"]
 date: "2026-07-29"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
 ---
 
-# Optimize Filament Admin Panels with Best Practices
+# Move Filament Global Search to Sidebar
 
-> Key insights for building high-performance admin dashboards using Filament v3 and Livewire components.
+> Customize your Filament admin panel layout by moving the global search bar to the top of the navigation sidebar.
 
-Filament powers fast admin panel creation in Laravel. Keep panels performant by deferring heavy table calculations, leveraging relation managers over deep joins, and custom field component abstractions.
+In Filament admin panels, the global search bar renders in the top header by default. Using render hooks, you can move global search into the navigation sidebar.
+
+Register a render hook in your service provider using `PanelsRenderHook::SIDEBAR_NAV_START`:
 
 ```php
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+namespace App\Providers;
 
-public static function table(Table $table): Table
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
 {
-    return $table
-        ->columns([
-            TextColumn::make('title')->searchable()->sortable(),
-            TextColumn::make('author.name')->numeric(),
-        ])
-        ->deferLoading(); // Accelerate initial page paint
+    public function boot(): void
+    {
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::SIDEBAR_NAV_START,
+            fn (): string => Blade::render('@livewire(Filament\\Livewire\\GlobalSearch::class)')
+        );
+    }
 }
 ```
 
-- Use deferLoading() on heavy tables to speed up initial page render
-- Prefer RelationManagers over complex raw table joins for nested resources
-- Keep form schema fields clean by extracting custom field components
+- Move global search out of the header and into the sidebar navigation
+- `PanelsRenderHook::SIDEBAR_NAV_START` places elements right above navigation items
+- Defer loading on large admin tables to keep page paint instant
+
