@@ -1,6 +1,6 @@
 ---
-category: "PHP"
-tags: ["PHP", "Laravel", "Best Practices"]
+category: "Laravel"
+tags: ["Laravel", "PHP", "Helpers", "Best Practices"]
 date: "2026-02-20"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
