@@ -1,5 +1,5 @@
 ---
-category: "Laravel"
+category: "Filament"
 tags: ["Laravel", "Filament", "Livewire"]
 date: "2026-07-29"
 author: "Punyapal Shah"

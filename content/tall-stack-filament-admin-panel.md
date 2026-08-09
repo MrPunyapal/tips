@@ -1,5 +1,5 @@
 ---
-category: "Laravel"
+category: "Filament"
 tags: ["Laravel", "Filament", "TALL Stack"]
 date: "2024-11-13"
 author: "Punyapal Shah"
