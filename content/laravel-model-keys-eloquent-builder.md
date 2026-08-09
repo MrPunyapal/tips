@@ -8,32 +8,17 @@ author_url: "https://x.com/MrPunyapal"
 
 # Use modelKeys() on the Eloquent Builder in Laravel 13.24
 
-> Laravel 13.24 adds `modelKeys()` directly to the Eloquent query builder, replacing hardcoded `pluck('id')` calls with a method that automatically uses the model's configured primary key.
+> Laravel 13.24 adds modelKeys() directly to the Eloquent query builder, replacing hardcoded pluck('id') calls with a method that uses the model primary key.
 
-### Replacing pluck()
+Instead of hardcoding column strings like pluck('id'), calling modelKeys() on the query builder automatically respects custom primary key configurations defined on the target model.
 
 ```php
 use App\Models\User;
 
-// Before: hardcoded column name
-$ids = User::where('active', true)->pluck('id');
-
-// After: respects the model's primary key automatically
+// Replaces User::where('active', true)->pluck('id')
 $ids = User::where('active', true)->modelKeys();
 ```
 
-### Working with Custom Primary Keys
-
-```php
-class Order extends Model
-{
-    protected $primaryKey = 'order_uuid';
-}
-
-// Automatically plucks 'order_uuid': no hardcoded column names
-$keys = Order::where('status', 'shipped')->modelKeys();
-```
-
-- Replaces `pluck('id')` with a model-aware alternative
-- Automatically respects custom `$primaryKey` definitions
-- Previously only available on Eloquent Collections, now works on the query builder
+- Replaces pluck('id') with a model-aware alternative
+- Automatically respects custom $primaryKey definitions
+- Previously only available on Eloquent Collections, now works on the builder
