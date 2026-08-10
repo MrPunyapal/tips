@@ -1,19 +1,55 @@
 # Developer Tips & Snippets
 
-Curated bite-sized engineering tips, idiomatic patterns, and practical snippets for **Laravel**, **Pest PHP**, **PHP**, **JavaScript**, **TypeScript**, **Git**, and **Software Architecture** by [Punyapal Shah](https://mrpunyapal.dev).
+Curated bite-sized engineering tips, idiomatic patterns, and practical snippets for **Laravel**, **PHP**, **Pest PHP**, **Filament**, **JavaScript**, **CSS**, and **MySQL** by [Punyapal Shah](https://mrpunyapal.dev).
 
 Read the interactive, searchable version at **[mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)**.
 
 ---
 
+## 📚 Category & Subcategory Directory Index
+
+Explore engineering tips directly in the repository by category:
+
+- **Laravel**
+  - [Architecture](content/laravel/architecture)
+  - [Blade](content/laravel/blade)
+  - [Cache](content/laravel/cache)
+  - [Configuration](content/laravel/configuration)
+  - [Eloquent](content/laravel/eloquent)
+  - [HTTP & API](content/laravel/http-api)
+  - [Queue](content/laravel/queue)
+  - [Routing](content/laravel/routing)
+  - [Utilities](content/laravel/utilities)
+  - [Validation](content/laravel/validation)
+- **PHP**
+  - [Basics](content/php/basics)
+  - [Constants](content/php/constants)
+  - [Syntax](content/php/syntax)
+  - [Tooling](content/php/tooling)
+- **Pest PHP**
+  - [Plugins](content/pest-php/plugins)
+  - [Testing](content/pest-php/testing)
+- **Filament**
+  - [Admin Panel](content/filament/admin-panel)
+- **JavaScript**
+  - [DOM](content/javascript/dom)
+  - [Frameworks](content/javascript/frameworks)
+- **CSS**
+  - [Styling](content/css/styling)
+- **MySQL**
+  - [Queries](content/mysql/queries)
+
+---
+
 ## 🛠️ Contributing a Tip
 
-Found a typo or have an idiomatic tip you'd like to share?
+Found a typo or have an idiomatic tip to share?
 1. Fork this repository.
-2. Add a new `.md` file in `content/` with standard YAML frontmatter:
+2. Add a new `.md` file in `content/<category>/<subcategory>/` with standard YAML frontmatter:
    ```yaml
    ---
-   category: "Laravel" # or Pest PHP, PHP, JavaScript, TypeScript, Git
+   category: "Laravel" # Laravel, PHP, Pest PHP, Filament, JavaScript, CSS, MySQL
+   subcategory: "Eloquent" # Eloquent, Validation, Queue, Routing, Syntax, etc.
    tags: ["Laravel", "Eloquent"]
    date: "YYYY-MM-DD"
    author: "Your Name"
