@@ -15,13 +15,13 @@ Navigation bars often suffer from subtle layout shifts during page reloads, them
 
 ### 1. Lock Root Scrollbar Space
 
-Navigating between long pages with scrollbars and short pages without scrollbars causes horizontal layout jumps. Use `scrollbar-gutter` on `html` and place horizontal overflow control on `body`.
+Navigating between long pages with scrollbars and short pages without scrollbars causes horizontal layout jumps. Use `scrollbar-gutter: stable` on `html` with `overflow-y: auto`.
 
 ```css
-/* Reserve scrollbar width globally on the root element */
+/* Reserve scrollbar width globally without forcing a scrollbar track on short pages */
 html {
   scrollbar-gutter: stable;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 /* Prevent horizontal overflow without breaking root scrollbar gutter */
@@ -29,6 +29,8 @@ body {
   overflow-x: hidden;
 }
 ```
+
+`scrollbar-gutter: stable` reserves the scrollbar space on short pages so layout width remains constant, while `overflow-y: auto` prevents rendering an empty scrollbar track when scrolling is not needed.
 
 Do not place `overflow-x: hidden` directly on `html`, as browsers will ignore root `scrollbar-gutter` calculations when overflow is clipped at the html element level.
 
@@ -117,7 +119,7 @@ Changing text color from gray to solid black or white triggers font stem-darkeni
 
 ### Key Takeaways
 
-- Reserve scrollbar width on `html` with `scrollbar-gutter: stable` and handle clipping on `body`.
+- Reserve scrollbar width on `html` with `scrollbar-gutter: stable` and `overflow-y: auto`.
 - Reserve space for bold tab labels using `display: inline-grid` and `content: attr(data-text)`.
 - Pre-render all theme toggle states in static HTML to eliminate DOM injection flicker.
 - Adjust text opacity rather than hex colors to preserve font glyph vector calculations.
