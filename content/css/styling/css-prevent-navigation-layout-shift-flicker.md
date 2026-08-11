@@ -34,7 +34,23 @@ body {
 
 Do not place `overflow-x: hidden` directly on `html`, as browsers will ignore root `scrollbar-gutter` calculations when overflow is clipped at the html element level.
 
-### 2. Lock Navigation Tab Widths with CSS Grid
+### 2. Prevent View Transition Scrollbar Flicker
+
+When using native cross-document View Transitions (`@view-transition { navigation: auto; }`), browsers render outgoing and incoming page snapshots simultaneously. For a single frame during the transition, the viewport height expands, triggering a temporary scrollbar track.
+
+```css
+/* Prevent temporary scrollbar flicker during cross-document view transitions */
+::view-transition-group(root),
+::view-transition-image-pair(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  overflow: hidden !important;
+}
+```
+
+Setting `overflow: hidden` on the root view transition pseudo-elements clips snapshot layers to viewport bounds, preventing split-second scrollbar popping during page navigations.
+
+### 3. Lock Navigation Tab Widths with CSS Grid
 
 Active or hovered navigation tabs often expand in width when text becomes bold or changes color contrast, pushing adjacent tabs left or right. Use CSS Grid overlay with an invisible pseudo-element to reserve bold text dimensions upfront.
 
@@ -83,7 +99,7 @@ Active or hovered navigation tabs often expand in width when text becomes bold o
 }
 ```
 
-### 3. Pre-render Theme Toggle Icons in HTML
+### 4. Pre-render Theme Toggle Icons in HTML
 
 Swapping sun and moon icons via JavaScript after page load causes visual button flickering. Pre-render both icons directly in static HTML and toggle visibility using CSS theme classes.
 
@@ -101,7 +117,7 @@ Swapping sun and moon icons via JavaScript after page load causes visual button 
 </button>
 ```
 
-### 4. Use Opacity for Text Contrast Changes
+### 5. Use Opacity for Text Contrast Changes
 
 Changing text color from gray to solid black or white triggers font stem-darkening in browser rendering engines, altering glyph widths by fractions of a pixel. Use constant base colors and toggle opacity instead.
 
@@ -120,6 +136,7 @@ Changing text color from gray to solid black or white triggers font stem-darkeni
 ### Key Takeaways
 
 - Reserve scrollbar width on `html` with `scrollbar-gutter: stable` and `overflow-y: auto`.
+- Clip View Transition root pseudo-elements with `overflow: hidden` to prevent split-second scrollbar popping.
 - Reserve space for bold tab labels using `display: inline-grid` and `content: attr(data-text)`.
 - Pre-render all theme toggle states in static HTML to eliminate DOM injection flicker.
 - Adjust text opacity rather than hex colors to preserve font glyph vector calculations.
