@@ -7,15 +7,15 @@ author_url: "https://x.com/MrPunyapal"
 subcategory: "GitHub Actions"
 ---
 
-# Trigger a GitHub Actions Workflow in Another Repository
+# Trigger a GitHub Actions Workflow Across Repositories
 
-> Use `repository_dispatch` to trigger a workflow in a different repository when a PR is merged or code is pushed.
+> Use `repository_dispatch` to trigger a workflow in a target repository when commits or PRs land in a source repository.
 
-GitHub repositories are isolated — merging a PR in Repo A will never automatically trigger a workflow in Repo B. The `repository_dispatch` event bridges this gap.
+GitHub Actions workflows are scoped to a single repository by default. To run a workflow in another repository after merging a PR or pushing a commit, use GitHub's `repository_dispatch` API endpoint.
 
-## 1. Set Up the Listener (Target Repo)
+## 1. Configure the Target Repository Listener
 
-In the repository where you want the workflow to **run**, add `repository_dispatch` as a trigger:
+Add `repository_dispatch` to the `on` block in the target repository workflow file:
 
 ```yaml
 # .github/workflows/build.yml (target repo)
@@ -34,12 +34,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Build triggered!"
+      - run: echo "Build triggered"
 ```
 
-## 2. Set Up the Notifier (Source Repo)
+## 2. Configure the Source Repository Dispatcher
 
-In the repository that should **send** the signal, add a workflow that fires a `curl` request:
+In the source repository, add a workflow step that sends a POST request to GitHub's dispatches endpoint:
 
 ```yaml
 # .github/workflows/notify.yml (source repo)
@@ -54,22 +54,30 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger target repo build
+      - name: Trigger target build
+        env:
+          TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
         run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.DISPATCH_TOKEN }}" \
+          if [ -z "$TOKEN" ]; then
+            echo "WEBSITE_DISPATCH_TOKEN is not set"
+            exit 1
+          fi
+          curl --fail --show-error -X POST \
+            -H "Authorization: Bearer $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/OWNER/TARGET-REPO/dispatches \
             -d '{"event_type": "content-updated"}'
 ```
 
-## 3. Create the Token
+## 3. Create and Assign the Access Token
 
-- Go to GitHub **Settings** → **Developer Settings** → **Fine-Grained Personal Access Tokens**
-- Scope it to the **target repository** only
-- Grant **Contents: Read and write** permission
-- Save the token as `DISPATCH_TOKEN` in the **source repository's** Actions secrets
+1. Create a Fine-Grained Personal Access Token under GitHub Developer Settings.
+2. Select the target repository under **Repository Access**.
+3. Set **Contents** permission to **Read and write**.
+4. Save the token as `WEBSITE_DISPATCH_TOKEN` in the source repository's Actions Secrets.
 
-- The `event_type` string must match exactly between the sender and the listener
-- The token needs write access to the **target** repo, stored as a secret in the **source** repo
-- Works for any cross-repo automation: monorepo builds, submodule syncs, deploy triggers
+## Key Considerations
+
+- The `event_type` string in the payload must match the array value under `types: [...]`.
+- Always pass `--fail --show-error` to `curl` so HTTP errors exit with code 1 instead of failing silently.
+- Fine-grained tokens limit dispatch access strictly to the targeted repository.
