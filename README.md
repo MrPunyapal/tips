@@ -2,7 +2,7 @@
 
 Curated bite-sized engineering tips, idiomatic patterns, and practical snippets for **Laravel**, **PHP**, **Pest PHP**, **Filament**, **JavaScript**, **CSS**, and **MySQL** by [Punyapal Shah](https://mrpunyapal.dev).
 
-Read the interactive, searchable version at **[mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)**.
+Read the interactive, searchable version at **[mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)** or subscribe via RSS feed at **[mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)**.
 
 ---
 
@@ -38,6 +38,13 @@ Explore engineering tips directly in the repository by category:
   - [Styling](content/css/styling)
 - **MySQL**
   - [Queries](content/mysql/queries)
+
+---
+
+## 📡 RSS Feed
+
+Subscribe to new developer tips automatically in your RSS reader:
+- **RSS Feed URL**: [https://mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)
 
 ---
 
