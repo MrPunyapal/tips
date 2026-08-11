@@ -13,9 +13,9 @@ subcategory: "Styling"
 
 Navigation bars often suffer from subtle layout shifts during page reloads, theme toggles, and tab switches. Combining a few CSS and HTML techniques eliminates these visual jumps entirely.
 
-### 1. Lock Root Scrollbar Space
+### 1. Lock Root Scrollbar Space and Clip Horizontal Overflow
 
-Navigating between long pages with scrollbars and short pages without scrollbars causes horizontal layout jumps. Use `scrollbar-gutter: stable` on `html` with `overflow-y: auto`.
+Navigating between long pages with scrollbars and short pages without scrollbars causes horizontal layout jumps. Use `scrollbar-gutter: stable` on `html` with `overflow-y: auto`, and clip horizontal overflow on `body` with `overflow-x: clip`.
 
 ```css
 /* Reserve scrollbar width globally without forcing a scrollbar track on short pages */
@@ -24,15 +24,15 @@ html {
   overflow-y: auto;
 }
 
-/* Prevent horizontal overflow without breaking root scrollbar gutter */
+/* Clip wide horizontal overflow without creating a second scroll container */
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 ```
 
-`scrollbar-gutter: stable` reserves the scrollbar space on short pages so layout width remains constant, while `overflow-y: auto` prevents rendering an empty scrollbar track when scrolling is not needed.
+`scrollbar-gutter: stable` reserves scrollbar space on short pages so layout width remains constant across navigations, while `overflow-y: auto` avoids rendering an empty scrollbar track when scrolling is not needed.
 
-Do not place `overflow-x: hidden` directly on `html`, as browsers will ignore root `scrollbar-gutter` calculations when overflow is clipped at the html element level.
+Use `overflow-x: clip` instead of `overflow-x: hidden` on `body`. Traditional `overflow-x: hidden` forces browsers to evaluate `overflow-y` as `auto`, creating a secondary scroll container on `body` that causes double vertical scrollbars. `overflow-x: clip` clips horizontal overflow cleanly without creating a scrolling context.
 
 ### 2. Prevent View Transition Scrollbar Flicker
 
@@ -135,7 +135,7 @@ Changing text color from gray to solid black or white triggers font stem-darkeni
 
 ### Key Takeaways
 
-- Reserve scrollbar width on `html` with `scrollbar-gutter: stable` and `overflow-y: auto`.
+- Reserve scrollbar width on `html` with `scrollbar-gutter: stable` and clip horizontal overflow on `body` with `overflow-x: clip`.
 - Clip View Transition root pseudo-elements with `overflow: hidden` to prevent split-second scrollbar popping.
 - Reserve space for bold tab labels using `display: inline-grid` and `content: attr(data-text)`.
 - Pre-render all theme toggle states in static HTML to eliminate DOM injection flicker.
