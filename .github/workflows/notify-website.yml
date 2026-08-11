@@ -1,0 +1,19 @@
+name: Notify Website of Tips Update
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger mrpunyapal.dev build
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.WEBSITE_DISPATCH_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/MrPunyapal/mrpunyapal.dev/dispatches \
+            -d '{"event_type": "tips-updated"}'
