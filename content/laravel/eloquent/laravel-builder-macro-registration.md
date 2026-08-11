@@ -37,3 +37,4 @@ $orders = Order::query()
 - Register on `Illuminate\Database\Eloquent\Builder` for Eloquent-level macros
 - The closure receives `$this` bound to the current builder instance
 - Useful for performance hints that aren't covered by the default query builder API
+- **Note:** The `WITH (INDEX(...))` syntax used above is specific to **Microsoft SQL Server (T-SQL)**. MySQL uses `FORCE INDEX(...)` and PostgreSQL relies on the query planner (no direct index hints). Adjust the macro body to match your database engine.
