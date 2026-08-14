@@ -1,12 +1,19 @@
-# Developer Tips & Snippets
+# Laravel Tips
 
-Curated bite-sized engineering tips, idiomatic patterns, and practical snippets for **Laravel**, **PHP**, **Pest PHP**, **Filament**, **JavaScript**, **CSS**, and **MySQL** by [Punyapal Shah](https://mrpunyapal.dev).
+This repository contains the Markdown source files for **Laravel Tips** published at [mrpunyapal.dev/tips](https://mrpunyapal.dev/tips).
 
-Read the interactive, searchable version at **[mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)** or subscribe via RSS feed at **[mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)**.
+## Website
 
----
+Published interactive version: [https://mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)
+RSS Feed: [https://mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)
 
-## 📚 Category & Subcategory Directory Index
+The website is statically generated directly from the Markdown files maintained in this repository.
+
+## What You'll Find
+
+Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecosystem. Topics include Eloquent, Livewire, Flux, Filament, testing with Pest PHP, queues, performance optimization, validation, APIs, and everyday developer workflows.
+
+## Category & Subcategory Directory Index
 
 Explore engineering tips directly in the repository by category:
 
@@ -36,47 +43,43 @@ Explore engineering tips directly in the repository by category:
   - [Frameworks](content/javascript/frameworks)
 - **CSS**
   - [Styling](content/css/styling)
+- **Git**
+  - [Workflow](content/git/workflow)
 - **MySQL**
   - [Queries](content/mysql/queries)
+- **Tailwind CSS**
+  - [Styling](content/tailwind-css/styling)
 
----
+## Contributing
 
-## 📡 RSS Feed
+Contributions are welcome. If you have an idiomatic tip or fix to share:
 
-Subscribe to new developer tips automatically in your RSS reader:
-- **RSS Feed URL**: [https://mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)
-
----
-
-## 🛠️ Contributing a Tip
-
-Found a typo or have an idiomatic tip to share?
 1. Fork this repository.
-2. Add a new `.md` file in `content/<category>/<subcategory>/` with standard YAML frontmatter:
-   ```yaml
-   ---
-   category: "Laravel" # Laravel, PHP, Pest PHP, Filament, JavaScript, CSS, MySQL
-   subcategory: "Eloquent" # Eloquent, Validation, Queue, Routing, Syntax, etc.
-   tags: ["Laravel", "Eloquent"]
-   date: "YYYY-MM-DD"
-   author: "Your Name"
-   author_url: "https://x.com/yourhandle" # or your GitHub / website link
-   ---
-   ```
-3. Submit a Pull Request!
+2. Create a new `.md` file inside the appropriate `content/<category>/<subcategory>/` directory.
+3. Include the standard YAML frontmatter at the top of the file:
 
+```yaml
 ---
-
-## 👤 Author
-
-**Punyapal Shah**
-- Website: [mrpunyapal.dev](https://mrpunyapal.dev)
-- X / Twitter: [@MrPunyapal](https://x.com/MrPunyapal)
-- GitHub: [@MrPunyapal](https://github.com/MrPunyapal)
-- GitHub Sponsors: [sponsors/MrPunyapal](https://github.com/sponsors/MrPunyapal)
-
+category: "Laravel"
+subcategory: "Eloquent"
+tags: ["Laravel", "Eloquent"]
+date: "YYYY-MM-DD"
+author: "Your Name"
+author_url: "https://x.com/yourhandle"
 ---
+```
 
-## 📄 License
+4. Open a Pull Request explaining the tip and what problem it solves.
+
+## Writing Tips
+
+Keep tips focused and practical:
+
+- Focus on one clear idea or solution.
+- Provide concise, working code examples.
+- Explain the engineering rationale or outcome.
+- Ensure technical accuracy for Laravel and PHP developers.
+
+## License
 
 MIT License.
