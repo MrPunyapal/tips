@@ -4,7 +4,7 @@ tags: ["Laravel", "Database", "Seeders"]
 date: "2026-01-07"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
-subcategory: "Cache"
+subcategory: "Database"
 ---
 
 # Load Large SQL Dumps in Laravel Seeders
