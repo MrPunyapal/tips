@@ -2,6 +2,7 @@
 category: "Laravel"
 tags: ["Laravel", "Configuration", "Testing", "Pest PHP"]
 date: "2023-11-30"
+updated: "2026-08-16"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
 subcategory: "Configuration"

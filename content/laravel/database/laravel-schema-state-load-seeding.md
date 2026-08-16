@@ -2,6 +2,7 @@
 category: "Laravel"
 tags: ["Laravel", "Database", "Seeders"]
 date: "2026-01-07"
+updated: "2026-08-15"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
 subcategory: "Database"
