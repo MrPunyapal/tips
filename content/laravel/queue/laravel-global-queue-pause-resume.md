@@ -2,7 +2,6 @@
 category: "Laravel"
 tags: ["Laravel", "Queue", "Deployment"]
 date: "2026-08-17"
-updated: "2026-08-17"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
 subcategory: "Queue"
