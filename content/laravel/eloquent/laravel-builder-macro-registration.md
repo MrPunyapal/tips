@@ -3,7 +3,7 @@ category: "Laravel"
 tags: ["Laravel", "Eloquent", "Macros"]
 date: "2026-08-11"
 author: "Vasile Papuc"
-author_url: "https://www.linkedin.com/pulse/how-many-laravel-macros-do-you-know-vasile-papuc-wfuac/"
+author_url: "https://www.linkedin.com/in/vasile-papuc-6423a41b5"
 subcategory: "Eloquent"
 ---
 
