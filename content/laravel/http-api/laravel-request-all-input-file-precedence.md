@@ -4,7 +4,7 @@ tags: ["Laravel", "HTTP", "Request", "Files"]
 date: "2026-08-19"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
-subcategory: "HTTP / API"
+subcategory: "HTTP & API"
 ---
 
 # Laravel 13.25 Reverses Merge Order in Request::all()
