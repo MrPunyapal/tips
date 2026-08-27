@@ -56,7 +56,7 @@ class ListAdminsCommand extends Command
 | ID | Name          | Email               | Role   | Created At       |
 +----+---------------+---------------------+--------+------------------+
 | 1  | Punyapal Shah | punyapal@dev.local  | Owner  | 2026-01-15 08:30 |
-| 2  | Alex Mercer   | alex@dev.local      | Admin  | 2026-02-01 10:15 |
+| 2  | Punyapal Shah   | punyapal@example.com      | Admin  | 2026-02-01 10:15 |
 +----+---------------+---------------------+--------+------------------+
 ```
 

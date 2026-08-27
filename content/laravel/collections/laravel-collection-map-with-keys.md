@@ -29,7 +29,7 @@ $lookup = $users->mapWithKeys(function (User $user) {
 // Output:
 // [
 //     'punyapal@example.com' => 'Punyapal Shah',
-//     'alex@example.com'     => 'Alex Mercer',
+//     'alex@example.com'     => 'Punyapal Shah',
 // ]
 ```
 

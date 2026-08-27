@@ -44,7 +44,7 @@ use Illuminate\Http\Request;
 
 $request = Request::create('/', 'POST', [
     'profile' => [
-        'name' => 'Taylor',
+        'name' => 'Punyapal',
     ],
 ], [], [
     'profile' => [
@@ -61,7 +61,7 @@ $request->all();
 // Laravel 13.25
 // Input is merged last, so the submitted value takes precedence.
 $request->all();
-// profile.name => 'Taylor'
+// profile.name => 'Punyapal'
 // profile.avatar => UploadedFile
 
 // Need the uploaded file? file() still returns it.
@@ -82,7 +82,7 @@ $avatar = $request->file('profile.name');
 ## Nested Recursive Merging
 
 Because Laravel uses `array_replace_recursive()`, precedence only applies to specific keys that collide:
-- `profile.name` exists in both input and files, so the submitted string `'Taylor'` takes precedence in `all()`.
+- `profile.name` exists in both input and files, so the submitted string `'Punyapal'` takes precedence in `all()`.
 - `profile.avatar` exists only in the files bag, so it continues to appear in `$request->all()` as an `UploadedFile` without interference.
 
 ## Summary
