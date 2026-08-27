@@ -1,10 +1,10 @@
 ---
-category: "Laravel"
+category: "Livewire"
 tags: ["Laravel", "Livewire", "HTTP", "Streaming", "CSV", "Performance"]
 date: "2023-11-06"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
-subcategory: "Livewire"
+subcategory: "Performance"
 ---
 
 # Stream CSV Report Downloads with Renderless Livewire Component Actions

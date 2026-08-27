@@ -1,10 +1,10 @@
 ---
-category: "Laravel"
+category: "Livewire"
 tags: ["Laravel", "Livewire", "Blade", "Alpine.js", "Tooling"]
 date: "2024-01-14"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
-subcategory: "Livewire"
+subcategory: "Components"
 ---
 
 # Fix Blade View Cache Compilation for Teleport Directives in Livewire
