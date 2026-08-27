@@ -15,40 +15,52 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore engineering tips directly in the repository by category:
+Explore 311 engineering tips directly in the repository by category:
 
-- **Laravel**
-  - [Architecture](content/laravel/architecture)
-  - [Blade](content/laravel/blade)
-  - [Cache](content/laravel/cache)
-  - [Configuration](content/laravel/configuration)
-  - [Eloquent](content/laravel/eloquent)
-  - [HTTP & API](content/laravel/http-api)
-  - [Queue](content/laravel/queue)
-  - [Routing](content/laravel/routing)
-  - [Utilities](content/laravel/utilities)
-  - [Validation](content/laravel/validation)
-- **PHP**
-  - [Basics](content/php/basics)
-  - [Constants](content/php/constants)
-  - [Syntax](content/php/syntax)
-  - [Tooling](content/php/tooling)
-- **Pest PHP**
-  - [Plugins](content/pest-php/plugins)
-  - [Testing](content/pest-php/testing)
-- **Filament**
-  - [Admin Panel](content/filament/admin-panel)
-- **JavaScript**
-  - [DOM](content/javascript/dom)
-  - [Frameworks](content/javascript/frameworks)
-- **CSS**
-  - [Styling](content/css/styling)
-- **Git**
-  - [Workflow](content/git/workflow)
-- **MySQL**
-  - [Queries](content/mysql/queries)
-- **Tailwind CSS**
-  - [Styling](content/tailwind-css/styling)
+<!-- TIPS_INDEX:START -->
+- **Laravel (271)**
+  - [Architecture (6)](content/laravel/architecture)
+  - [Blade (8)](content/laravel/blade)
+  - [Cache (2)](content/laravel/cache)
+  - [Collections (13)](content/laravel/collections)
+  - [Configuration (8)](content/laravel/configuration)
+  - [Database (13)](content/laravel/database)
+  - [Eloquent (97)](content/laravel/eloquent)
+  - [Events (3)](content/laravel/events)
+  - [HTTP & API (22)](content/laravel/http-api)
+  - [Mail (1)](content/laravel/mail)
+  - [Queue (17)](content/laravel/queue)
+  - [Routing (17)](content/laravel/routing)
+  - [Storage (1)](content/laravel/storage)
+  - [Testing (12)](content/laravel/testing)
+  - [Utilities (32)](content/laravel/utilities)
+  - [Validation (19)](content/laravel/validation)
+- **PHP (22)**
+  - [Basics (4)](content/php/basics)
+  - [Performance (1)](content/php/performance)
+  - [Strings (1)](content/php/strings)
+  - [Syntax (8)](content/php/syntax)
+  - [Tooling (8)](content/php/tooling)
+- **Pest PHP (5)**
+  - [Plugins (2)](content/pest-php/plugins)
+  - [Testing (3)](content/pest-php/testing)
+- **CSS (3)**
+  - [Styling (3)](content/css/styling)
+- **Filament (2)**
+  - [Admin Panel (2)](content/filament/admin-panel)
+- **Git (2)**
+  - [Github Actions (1)](content/git/github-actions)
+  - [Workflow (1)](content/git/workflow)
+- **Javascript (2)**
+  - [Frameworks (2)](content/javascript/frameworks)
+- **Livewire (2)**
+  - [Components (1)](content/livewire/components)
+  - [Performance (1)](content/livewire/performance)
+- **MySQL (1)**
+  - [Queries (1)](content/mysql/queries)
+- **Tailwind CSS (1)**
+  - [Styling (1)](content/tailwind-css/styling)
+<!-- TIPS_INDEX:END -->
 
 ## Contributing
 

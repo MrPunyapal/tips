@@ -1,4 +1,4 @@
-name: Notify Website of Tips Update
+name: Update Readme and Notify Website
 
 on:
   push:
@@ -6,10 +6,38 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  notify:
+  update-readme-and-notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Update README category index and counts
+        run: node scripts/update-readme.mjs
+
+      - name: Commit and push if README changed
+        run: |
+          if [ -n "$(git status --porcelain README.md)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md
+            git commit -m "Update README tip directory index and counts [skip ci]"
+            git push origin main
+          else
+            echo "README.md is already up to date."
+          fi
+
       - name: Trigger mrpunyapal.dev build
         env:
           TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
