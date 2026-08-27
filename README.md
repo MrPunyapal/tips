@@ -15,7 +15,7 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore 311 engineering tips directly in the repository by category:
+Explore 316 engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
 - **Laravel (276)**

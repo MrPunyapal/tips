@@ -123,6 +123,11 @@ function updateReadme() {
     }
   }
 
+  readmeContent = readmeContent.replace(
+    /Explore \d+ engineering tips/g,
+    `Explore ${totalTips} engineering tips`
+  );
+
   fs.writeFileSync(readmePath, readmeContent, 'utf-8');
   console.log(`✅ README.md updated successfully with ${totalTips} tips across categories and subcategories.`);
 }
