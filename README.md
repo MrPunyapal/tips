@@ -15,7 +15,7 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore **320** engineering tips directly in the repository by category:
+Explore **323** engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
 - **Laravel (279)**
@@ -41,14 +41,14 @@ Explore **320** engineering tips directly in the repository by category:
   - [Strings (1)](content/php/strings)
   - [Syntax (8)](content/php/syntax)
   - [Tooling (8)](content/php/tooling)
+- **Git (6)**
+  - [Github Actions (4)](content/git/github-actions)
+  - [Workflow (2)](content/git/workflow)
 - **Pest PHP (5)**
   - [Plugins (2)](content/pest-php/plugins)
   - [Testing (3)](content/pest-php/testing)
 - **CSS (3)**
   - [Styling (3)](content/css/styling)
-- **Git (3)**
-  - [Github Actions (1)](content/git/github-actions)
-  - [Workflow (2)](content/git/workflow)
 - **Filament (2)**
   - [Admin Panel (2)](content/filament/admin-panel)
 - **Javascript (2)**
