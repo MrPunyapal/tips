@@ -38,7 +38,7 @@ Enable binding masking on your database connection:
     'mysql' => [
         // ...
 
-        'mask_bindings_in_exception_messages' => env('DB_MASK_BINDINGS', true),
+        'mask_bindings_in_exception_messages' => env('DB_MASK_BINDINGS', false),
     ],
 ];
 ```
@@ -92,7 +92,7 @@ Laravel 13.27 gives you more control over what appears in `QueryException` messa
 If you don't need actual query bindings embedded in your exception messages, enable:
 
 ```php
-'mask_bindings_in_exception_messages' => env('DB_MASK_BINDINGS', true),
+'mask_bindings_in_exception_messages' => env('DB_MASK_BINDINGS', false),
 ```
 
 You still have access to the bindings separately through `getBindings()`.
