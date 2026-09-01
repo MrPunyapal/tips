@@ -142,17 +142,6 @@ class BillingService
 Higher-order messages are supported across 23 Collection methods, organized by category:
 
 ```php
-// -------------------------------------------------------------
-// Left: Aggregation & Iteration
-// -------------------------------------------------------------
-
-// Before: a callback is needed just to return a property.
-$orders->groupBy(function (Order $order) {
-    return $order->status;
-});
-
-// After: higher-order messages let Laravel access it directly.
-$orders->groupBy->status;
 
 // Aggregation: calculate values from a property or method.
 $collection->average->property;
@@ -165,12 +154,6 @@ $collection->sum->property;
 $collection->each->method();
 $collection->map->property;
 $collection->flatMap->method();
-```
-
-```php
-// -------------------------------------------------------------
-// Right: Filtering, Finding, Grouping, & Sorting
-// -------------------------------------------------------------
 
 // Filtering: keep, remove, or check items using a property or method.
 $collection->contains->method();
