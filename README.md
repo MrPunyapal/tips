@@ -15,10 +15,10 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore **326** engineering tips directly in the repository by category:
+Explore **327** engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
-- **Laravel (281)**
+- **Laravel (282)**
   - [Architecture (9)](content/laravel/architecture)
   - [Blade (8)](content/laravel/blade)
   - [Cache (2)](content/laravel/cache)
@@ -31,7 +31,7 @@ Explore **326** engineering tips directly in the repository by category:
   - [Mail (1)](content/laravel/mail)
   - [Queue (18)](content/laravel/queue)
   - [Routing (17)](content/laravel/routing)
-  - [Storage (1)](content/laravel/storage)
+  - [Storage (2)](content/laravel/storage)
   - [Testing (12)](content/laravel/testing)
   - [Utilities (32)](content/laravel/utilities)
   - [Validation (19)](content/laravel/validation)
