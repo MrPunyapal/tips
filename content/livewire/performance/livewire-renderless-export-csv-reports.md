@@ -20,12 +20,12 @@ Livewire 3 provides the `#[Renderless]` attribute to execute an action without i
 ## The Livewire Component
 
 ```php
-namespace AppLivewire;
+namespace App\Livewire;
 
-use AppModelsReport;
-use LivewireAttributesRenderless;
-use LivewireComponent;
-use SymfonyComponentHttpFoundationStreamedResponse;
+use App\Models\Report;
+use Livewire\Attributes\Renderless;
+use Livewire\Component;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class TransactionReports extends Component
 {

@@ -70,7 +70,7 @@ class TempUpload extends Model
 Register the `model:prune` command in your application scheduler:
 
 ```php
-use IlluminateSupportFacadesSchedule;
+use Illuminate\Support\Facades\Schedule;
 
 Schedule::command('model:prune')->daily();
 ```

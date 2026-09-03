@@ -11,34 +11,15 @@ subcategory: "Eloquent"
 
 > Extend Laravel's Blueprint class with custom macros to standardize and reuse common schema columns across database migrations.
 
-Database migrations often require repeating the same group of audit columns across multiple tables. Repeating these field definitions across dozens of migrations creates maintenance overhead and inconsistencies.
+Database migrations frequently repeat the same cluster of audit columns (such as created/updated timestamps, soft deletes, and user foreign keys) across multiple tables.
 
-## The Problem: Repetitive Schema Definitions
+Using `Blueprint::macro()`, you can bundle these columns into a single reusable helper method.
 
-When multiple tables require tracking creation, updates, soft deletions, and restoration details, a standard migration file quickly becomes verbose:
+---
 
-```php
-Schema::create('posts', function (Blueprint $table) {
-    $table->id();
-    $table->string('title');
-    $table->text('content');
+## Register the Macro
 
-    // Repeated audit columns
-    $table->timestamps();
-    $table->softDeletes();
-    $table->timestamp('restored_at')->nullable();
-    $table->unsignedBigInteger('created_by')->nullable();
-    $table->unsignedBigInteger('updated_by')->nullable();
-    $table->unsignedBigInteger('deleted_by')->nullable();
-    $table->unsignedBigInteger('restored_by')->nullable();
-});
-```
-
-Duplicating these 8 lines across every new table definition increases boilerplate code and makes project-wide schema changes tedious.
-
-## Registering a Custom Blueprint Macro
-
-Laravel's `Illuminate\Database\Schema\Blueprint` class can be extended using macros. Registering a custom macro allows you to bundle related column definitions into a single helper method inside `AppServiceProvider`:
+Define your custom macro inside `AppServiceProvider::boot()`:
 
 ```php
 namespace App\Providers;
@@ -50,55 +31,25 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        Blueprint::macro('auditFields', function () {
+        Blueprint::macro('auditFields', function (bool $softDeletes = true) {
             $this->timestamps();
-            $this->softDeletes();
 
-            $this->timestamp('restored_at')->nullable();
+            if ($softDeletes) {
+                $this->softDeletes();
+            }
 
-            $this->unsignedBigInteger('created_by')->nullable();
-            $this->unsignedBigInteger('updated_by')->nullable();
-            $this->unsignedBigInteger('deleted_by')->nullable();
-            $this->unsignedBigInteger('restored_by')->nullable();
+            $this->foreignId('created_by')->nullable()->constrained('users');
+            $this->foreignId('updated_by')->nullable()->constrained('users');
         });
     }
 }
 ```
 
-### What These Fields Represent
+---
 
-- `timestamps()`: Adds standard `created_at` and `updated_at` timestamps.
-- `softDeletes()`: Adds a nullable `deleted_at` timestamp for soft deletion.
-- `restored_at`: Tracks the precise timestamp when a soft-deleted record is restored.
-- `created_by`, `updated_by`, `deleted_by`, `restored_by`: Store the user IDs of the accounts responsible for each state change.
+## Use Across Migrations
 
-## Reusing the Macro Across Migrations
-
-Once registered, the `auditFields()` macro is available on `$table` instances in any migration file.
-
-### Users Migration
-
-```php
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
-return new class extends Migration
-{
-    public function up(): void
-    {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-
-            $table->auditFields();
-        });
-    }
-};
-```
-
-### Posts Migration
+Call the macro directly on `$table` in any migration:
 
 ```php
 use Illuminate\Database\Migrations\Migration;
@@ -114,20 +65,17 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
 
+            // Injects timestamps, softDeletes, and audit user IDs
             $table->auditFields();
         });
     }
 };
 ```
 
-Both tables receive identical audit field structures while keeping migration files concise.
+---
 
-## Customizing Project Conventions
+## Key Points
 
-Macros can be tailored to fit your application's specific conventions. If a project requires additional metadata columns, tenant identifiers, or custom status attributes across multiple tables, they can be defined within the macro body.
-
-## Why This Is Useful
-
-Defining schema macros centralizes multi-column definitions into a single location in your codebase. If your application conventions expand to include additional columns, updating the macro definition ensures future migrations include the new standard structure.
-
-Note that registering or modifying a macro does not alter existing database tables or retroactively update past migrations. Macros expand to standard column definitions only when executed during active migration runs.
+- **Consistency**: Guarantees identical column types, nullability, and foreign key constraints across all audited tables.
+- **Execution Timing**: Macros expand into standard column definitions when `php artisan migrate` runs; they do not retroactively alter already-migrated tables.
+- **Parametric Flexibility**: Add arguments to your macro closure (like `$softDeletes = true`) to adapt column inclusion per table.

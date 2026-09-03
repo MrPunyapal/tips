@@ -16,13 +16,13 @@ Applications frequently need to log key lifecycle actions for debugging and comp
 ## The ActivityLogEventSubscriber
 
 ```php
-namespace AppListeners;
+namespace App\Listeners;
 
-use IlluminateConsoleEventsCommandFinished;
-use IlluminateEventsDispatcher;
-use IlluminateFoundationHttpEventsRequestHandled;
-use IlluminateHttpClientEventsResponseReceived;
-use IlluminateSupportFacadesLog;
+use Illuminate\Console\Events\CommandFinished;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Foundation\Http\Events\RequestHandled;
+use Illuminate\Http\Client\Events\ResponseReceived;
+use Illuminate\Support\Facades\Log;
 
 class ActivityLogEventSubscriber
 {
@@ -73,11 +73,11 @@ class ActivityLogEventSubscriber
 In Laravel 11+, register the subscriber inside your `AppServiceProvider::boot()` method (or `EventServiceProvider` in earlier versions):
 
 ```php
-namespace AppProviders;
+namespace App\Providers;
 
-use AppListenersActivityLogEventSubscriber;
-use IlluminateSupportFacadesEvent;
-use IlluminateSupportServiceProvider;
+use App\Listeners\ActivityLogEventSubscriber;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

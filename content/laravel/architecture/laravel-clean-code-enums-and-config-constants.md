@@ -42,7 +42,7 @@ enum OrderStatus: string
 ## Casting in Eloquent Models
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use App\Enums\OrderStatus;
 use Illuminate\Database\Eloquent\Model;

@@ -47,7 +47,7 @@ class MoneyCast implements CastsAttributes
 ## Applying to Models
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use App\Casts\MoneyCast;
 use Illuminate\Database\Eloquent\Model;

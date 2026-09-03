@@ -18,9 +18,9 @@ However, `groupBy()` also accepts a closure that receives each item in the colle
 ## Grouping Records by Dynamic Time Periods
 
 ```php
-use AppModelsOrder;
-use CarbonCarbon;
-use IlluminateSupportCollection;
+use App\Models\Order;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 $orders = Order::query()
     ->where('created_at', '>=', now()->subYear())

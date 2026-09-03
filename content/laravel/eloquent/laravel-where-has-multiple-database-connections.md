@@ -18,7 +18,7 @@ Eloquent's `whereHas()` directly handles relations across different database con
 ## Defining Models on Separate Connections
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

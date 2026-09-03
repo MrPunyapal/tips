@@ -50,6 +50,6 @@ In Blade templates, use raw output tags to display the compiled HTML:
 
 ## Summary
 
-- Powered by the robust `league/commonmark` parser.
+- Powered by the reliable `league/commonmark` parser.
 - Supports security options to strip unsafe raw HTML and malicious JavaScript links.
 - Available as a static method (`Str::markdown`) and fluent string helper (`str()->markdown()`).

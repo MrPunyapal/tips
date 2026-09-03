@@ -11,14 +11,41 @@ subcategory: "Utilities"
 
 > PHP's empty() treats 0, '0', and false as empty. Laravel's blank() and filled() helpers handle these values intuitively without silent bugs.
 
-PHP's empty() is notoriously loose: it considers 0 and '0' empty. Laravel provides blank() and filled() as safer alternatives.
+PHP's native `empty()` is notoriously loose: it considers `0`, `'0'`, and `false` as empty, causing subtle bugs when validating quantities, scores, or boolean toggles.
+
+Laravel provides `blank()` and `filled()` as intuitive, string-trimmed alternatives.
+
+---
+
+## Comparison Matrix
 
 ```php
-if (blank($request->input('quantity'))) {
-    return 'Quantity is required';
-}
+// PHP empty() pitfalls:
+empty(0);       // true  (oops: 0 is a valid quantity!)
+empty('0');     // true  (oops: '0' is a valid string!)
+empty('   ');   // false (whitespace is NOT considered empty by PHP)
+
+// Laravel blank():
+blank(0);       // false (0 is a real value)
+blank('0');     // false ('0' is a real value)
+blank('   ');   // true  (automatically trims whitespace)
+blank('');      // true
+blank(null);    // true
+blank([]);      // true
+
+// Laravel filled() (exact inverse of blank()):
+filled(0);      // true
+filled('hello');// true
+filled('   ');  // false
 ```
 
-- blank() treats 0 and '0' as filled values, not blank
-- filled() is the exact inverse of blank()
-- Handles whitespace-only strings correctly
+---
+
+## Usage in Controllers
+
+```php
+// Clean validation without false positives on 0
+if (blank($request->input('score'))) {
+    return response()->json(['error' => 'Score is required'], 422);
+}
+```

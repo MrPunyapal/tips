@@ -149,4 +149,4 @@ git subtree push --prefix=packages/shared-lib shared-lib main
 ## Summary
 
 - Use **Git Submodules** when you need strict commit pinning and want the dependency to remain an isolated external project.
-- Use **Git Subtrees** when you want shared code to live directly in your repository with seamless cloning for collaborators.
+- Use **Git Subtrees** when you want shared code to live directly in your repository with direct cloning for collaborators.

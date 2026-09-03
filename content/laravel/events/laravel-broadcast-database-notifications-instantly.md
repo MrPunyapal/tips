@@ -18,11 +18,11 @@ By attaching an observer to Laravel's underlying `DatabaseNotification` model, y
 ## 1. Register the Observer in AppServiceProvider
 
 ```php
-namespace AppProviders;
+namespace App\Providers;
 
-use IlluminateBroadcastingPrivateChannel;
-use IlluminateNotificationsDatabaseNotification;
-use IlluminateSupportServiceProvider;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -70,10 +70,10 @@ Echo.private(`users.${userId}`)
 In Livewire 3 components, use the `#[On]` attribute:
 
 ```php
-namespace AppLivewire;
+namespace App\Livewire;
 
-use LivewireAttributesOn;
-use LivewireComponent;
+use Livewire\Attributes\On;
+use Livewire\Component;
 
 class NotificationBell extends Component
 {
@@ -89,4 +89,4 @@ class NotificationBell extends Component
 
 - Observe `DatabaseNotification::created` to automatically broadcast real-time events for every stored database notification.
 - Eliminates the need to duplicate broadcast payload definitions in individual notification classes.
-- Seamlessly integrates with Laravel Echo, Livewire, and Vue/React frontend architectures.
+- Directly integrates with Laravel Echo, Livewire, and Vue/React frontend architectures.

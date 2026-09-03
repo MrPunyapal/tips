@@ -18,7 +18,7 @@ Laravel relies on convention over configuration: if your database table follows 
 ## Over-Configured Model (Anti-Pattern)
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,7 +42,7 @@ class Article extends Model
 ## Clean Eloquent Model (Recommended)
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

@@ -126,7 +126,7 @@ The database executes the mathematical distance calculations internally using it
       $table->vector('embedding', dimensions: 1536);
       $table->timestamps();
   });
-  ```
+```
 
 ---
 

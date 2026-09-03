@@ -31,7 +31,7 @@ $request->validate([
 To validate a field based on dynamic runtime logic, invoke `sometimes()` on the validator instance:
 
 ```php
-use IlluminateSupportFacadesValidator;
+use Illuminate\Support\Facades\Validator;
 use IlluminateValidationValidator as ValidatorInstance;
 
 $validator = Validator::make($request->all(), [

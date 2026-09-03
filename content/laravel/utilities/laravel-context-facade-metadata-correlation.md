@@ -21,7 +21,7 @@ Laravel's `Context` facade stores cross-cutting metadata that automatically flow
 namespace App\Http\Middleware;
 
 use Closure;
-use IlluminateHttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Context;
 use Illuminate\Support\Str;
 

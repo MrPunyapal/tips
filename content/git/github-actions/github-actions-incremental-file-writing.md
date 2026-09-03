@@ -72,7 +72,7 @@ console.log(`Wrote ${written}/${Object.keys(pages).length} files (rest unchanged
 
 On a typical run where 3 out of 300 pages changed, you will see:
 
-```
+```text
 Wrote 3/300 files (rest unchanged)
 ```
 

@@ -18,11 +18,11 @@ Instead of writing repetitive query scopes and `$model->team_id = auth()->user()
 ## The BelongsToTeam Trait
 
 ```php
-namespace AppTraitsModels;
+namespace App\Traits\Models;
 
-use AppModelsTeam;
-use IlluminateDatabaseEloquentBuilder;
-use IlluminateDatabaseEloquentRelationsBelongsTo;
+use App\Models\Team;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait BelongsToTeam
 {
@@ -73,10 +73,10 @@ trait BelongsToTeam
 ## Using the Trait on Models
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
-use AppTraitsModelsBelongsToTeam;
-use IlluminateDatabaseEloquentModel;
+use App\Traits\Models\BelongsToTeam;
+use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {

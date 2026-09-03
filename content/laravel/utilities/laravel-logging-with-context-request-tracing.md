@@ -23,7 +23,7 @@ Create a request tracing middleware:
 namespace App\Http\Middleware;
 
 use Closure;
-use IlluminateHttpRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 

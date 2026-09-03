@@ -26,11 +26,11 @@ Using Eloquent's `Attribute` accessor and mutator, you can automatically hydrate
 ## Implementing the Nested Enum Cast
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
-use AppEnumsPostStatus;
-use IlluminateDatabaseEloquentCastsAttribute;
-use IlluminateDatabaseEloquentModel;
+use App\Enums\PostStatus;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {

@@ -20,10 +20,10 @@ By creating invokable "Tappable Scope" classes, you can share identical query co
 Create a dedicated scope class that accepts either an Eloquent `Builder` or a Scout `Builder`:
 
 ```php
-namespace AppModelsScopes;
+namespace App\Models\Scopes;
 
-use AppModelsUser;
-use IlluminateDatabaseEloquentBuilder;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use LaravelScoutBuilder as ScoutBuilder;
 
 final class PublishedScope
@@ -46,12 +46,12 @@ final class PublishedScope
 Apply the scope class inside your model's local scope using `$query->tap()`:
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
-use AppModelsScopesPublishedScope;
-use IlluminateDatabaseEloquentBuilder;
-use IlluminateDatabaseEloquentModel;
-use LaravelScoutSearchable;
+use App\Models\Scopes\PublishedScope;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -69,8 +69,8 @@ class Post extends Model
 The same scope class can be piped directly into Scout search queries via `->tap()`:
 
 ```php
-use AppModelsPost;
-use AppModelsScopesPublishedScope;
+use App\Models\Post;
+use App\Models\Scopes\PublishedScope;
 
 // Search posts with the same publishing constraints applied
 $results = Post::search($searchTerm)
@@ -80,7 +80,7 @@ $results = Post::search($searchTerm)
 
 ## Why Use Tappable Scopes?
 
-- **Dual Compatibility**: Operates seamlessly across both standard Eloquent queries and Laravel Scout search pipelines.
+- **Dual Compatibility**: Operates directly across both standard Eloquent queries and Laravel Scout search pipelines.
 - **Cross-Model Reuse**: Share identical filtering rules across multiple models (e.g. `Post`, `Article`, `Video`) without bloated traits.
 - **Cleaner Models**: Keeps model files lightweight by extracting complex filtering criteria into dedicated, testable classes.
 

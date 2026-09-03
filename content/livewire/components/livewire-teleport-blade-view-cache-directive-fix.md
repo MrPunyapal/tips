@@ -20,10 +20,10 @@ You can ensure consistent, error-free view compilation by registering custom Bla
 Add the custom directive registration inside your `AppServiceProvider::register()` or `boot()` method:
 
 ```php
-namespace AppProviders;
+namespace App\Providers;
 
-use IlluminateSupportFacadesBlade;
-use IlluminateSupportServiceProvider;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -11,12 +11,36 @@ subcategory: "Blade"
 
 > Laravel Pint v1.30.0 adds native Blade template formatting via the Pint/laravel_blade rule, using Prettier under the hood.
 
-Blade gets opinionated formatting in Pint, keeping your markup consistent without manual tweaking.
+Laravel Pint can format your `.blade.php` views alongside PHP files, keeping template indentation and directive styling consistent across your team.
+
+---
+
+## 1. Format via CLI
+
+Format Blade files on demand with the `--blade` flag:
 
 ```bash
 ./vendor/bin/pint --blade
 ```
 
-- Requires Node.js (Prettier runs under the hood)
-- Pint auto-detects package manager for dependency installation
-- Blade formatting is opinionated: consistent output, zero config debates
+---
+
+## 2. Enable Permanently in pint.json
+
+To make Blade formatting the default whenever `pint` runs (including in CI pipelines), enable the rule in `pint.json`:
+
+```json
+{
+    "rules": {
+        "Pint/laravel_blade": true
+    }
+}
+```
+
+---
+
+## Requirements & Mechanics
+
+- **Prettier Engine**: Pint invokes Prettier under the hood. Node.js must be available on the machine.
+- **Auto-Installation**: Pint auto-detects your package manager (`npm`, `pnpm`, `yarn`, `bun`) to install necessary Prettier dependencies when first run.
+- **Zero Config Arguments**: Opinionated defaults format loops, components, and directives consistently without configuration arguments.

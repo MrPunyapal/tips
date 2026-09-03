@@ -13,7 +13,7 @@ subcategory: "Eloquent"
 
 When dealing with legacy schemas or denormalized database designs where a model stores multiple related IDs inside a JSON array column (e.g. `[1, 2, 5]`), standard Eloquent relationships fail.
 
-Using array column relationship packages or custom query scope join helpers allows seamless querying:
+Using array column relationship packages or custom query scope join helpers allows direct querying:
 
 ```php
 use App\Models\Tag;

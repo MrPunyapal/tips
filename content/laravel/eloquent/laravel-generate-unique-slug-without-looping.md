@@ -20,10 +20,10 @@ You can determine the next unique slug in a single query by inspecting the maxim
 ## The Efficient Implementation
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
-use IlluminateDatabaseEloquentModel;
-use IlluminateSupportFacadesDB;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {

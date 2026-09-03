@@ -18,7 +18,7 @@ Maintaining manual `match ($this)` methods across dozens of application enums is
 ## The HasLabel Trait
 
 ```php
-namespace AppTraits;
+namespace App\Traits;
 
 trait HasLabel
 {
@@ -38,9 +38,9 @@ trait HasLabel
 ## Applying the Trait to Enums
 
 ```php
-namespace AppEnums;
+namespace App\Enums;
 
-use AppTraitsHasLabel;
+use App\Traits\HasLabel;
 
 enum PaymentStatus: int
 {
@@ -59,7 +59,7 @@ enum PaymentStatus: int
 ## Usage in Controllers and Blade Views
 
 ```php
-use AppEnumsPaymentStatus;
+use App\Enums\PaymentStatus;
 
 PaymentStatus::PENDING->label();
 // Output: "Pending"

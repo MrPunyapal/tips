@@ -18,16 +18,16 @@ Renaming enum cases across a large production application manually is error-pron
 ## 1. Custom Rector Rule for Enum Cases
 
 ```php
-namespace AppRector;
+namespace App\Rector;
 
-use PhpParserNode;
-use PhpParserNodeExprClassConstFetch;
-use PhpParserNodeIdentifier;
-use PhpParserNodeStmtEnumCase;
-use PHPStanReflectionReflectionProvider;
-use RectorRectorAbstractRector;
-use SymplifyRuleDocGeneratorValueObjectCodeSampleCodeSample;
-use SymplifyRuleDocGeneratorValueObjectRuleDefinition;
+use PhpParser\Node;
+use PhpParser\Node\Expr\ClassConstFetch;
+use PhpParser\Node\Identifier;
+use PhpParser\Node\Stmt\EnumCase;
+use PHPStan\Reflection\ReflectionProvider;
+use Rector\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 
 final class RenameEnumCasesToPascalCaseRector extends AbstractRector
 {
@@ -108,10 +108,10 @@ final class RenameEnumCasesToPascalCaseRector extends AbstractRector
 Because Rector parses PHP files rather than Blade templates, use an Artisan command to update enum case usages inside `resources/views/**/*.blade.php`:
 
 ```php
-namespace AppConsoleCommands;
+namespace App\Console\Commands;
 
-use IlluminateConsoleCommand;
-use IlluminateSupportFacadesFile;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 
 class RefactorBladeEnumsCommand extends Command
 {

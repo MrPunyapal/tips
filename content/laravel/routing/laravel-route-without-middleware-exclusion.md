@@ -19,7 +19,7 @@ Instead of breaking routes into separate fragmented group blocks, Laravel provid
 
 ```php
 use App\Http\Controllers\WebhookController;
-use AppHttpMiddlewareVerifyCsrfToken;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['web', 'auth'])->group(function () {

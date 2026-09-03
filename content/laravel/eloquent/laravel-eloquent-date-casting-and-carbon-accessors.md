@@ -18,7 +18,7 @@ Eloquent date casting automatically converts database timestamp strings into imm
 ## Defining Date Casts on Models
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

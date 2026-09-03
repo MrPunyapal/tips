@@ -18,10 +18,10 @@ Defining `$touches` on the child model updates parent timestamps automatically.
 ## Configuring $touches on Child Models
 
 ```php
-namespace AppModels;
+namespace App\Models;
 
-use IlluminateDatabaseEloquentModel;
-use IlluminateDatabaseEloquentRelationsBelongsTo;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {

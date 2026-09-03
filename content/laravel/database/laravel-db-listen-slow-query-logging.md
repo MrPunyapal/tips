@@ -20,11 +20,11 @@ Laravel provides `DB::listen()` to register a callback executed after every data
 Add the listener inside `AppServiceProvider::boot()`:
 
 ```php
-namespace AppProviders;
+namespace App\Providers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use IlluminateSupportServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

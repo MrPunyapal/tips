@@ -18,7 +18,7 @@ Carbon provides `setTestNow()` to lock time to a specific instant, alongside `ha
 ## Freezing Time in Feature Logic
 
 ```php
-use CarbonCarbon;
+use Carbon\Carbon;
 
 function isBirthdayOfferActive(Carbon $birthday): bool
 {
@@ -43,7 +43,7 @@ Carbon::setTestNow(null);
 In custom debug bars, health checks, or safety middleware, you can inspect whether the application is running under a simulated timestamp:
 
 ```php
-use CarbonCarbon;
+use Carbon\Carbon;
 
 if (Carbon::hasTestNow()) {
     logger()->warning('Application running with mocked Carbon time: ' . Carbon::now()->toDateTimeString());

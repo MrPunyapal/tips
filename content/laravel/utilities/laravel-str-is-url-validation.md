@@ -47,6 +47,6 @@ if (str($request->website)->isUrl(['https'])) {
 
 ## Summary
 
-- Uses robust native URL parsing under the hood.
+- Uses reliable native URL parsing under the hood.
 - Protocol filtering prevents dangerous schemes like `javascript:` or `data:`.
 - Replaces custom regex validation.

@@ -18,14 +18,14 @@ Manually reviewing and removing thousands of stale comments across hundreds of f
 ## The Rector Implementation
 
 ```php
-namespace AppRector;
+namespace App\Rector;
 
-use PhpParserComment;
-use PhpParserCommentDoc;
-use PhpParserNode;
-use RectorRectorAbstractRector;
-use SymplifyRuleDocGeneratorValueObjectCodeSampleCodeSample;
-use SymplifyRuleDocGeneratorValueObjectRuleDefinition;
+use PhpParser\Comment;
+use PhpParser\Comment\Doc;
+use PhpParser\Node;
+use Rector\Rector\AbstractRector;
+use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
+use Symplify\RuleDocGenerator\ValueObject\RuleDefinition;
 
 final class RemoveUnnecessaryCommentsRector extends AbstractRector
 {
@@ -142,8 +142,8 @@ final class RemoveUnnecessaryCommentsRector extends AbstractRector
 Add the custom rule to your project's Rector configuration:
 
 ```php
-use AppRectorRemoveUnnecessaryCommentsRector;
-use RectorConfigRectorConfig;
+use App\Rector\RemoveUnnecessaryCommentsRector;
+use Rector\Config\RectorConfig;
 
 return RectorConfig::configure()
     ->withRules([

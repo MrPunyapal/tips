@@ -20,11 +20,11 @@ Laravel provides rate limiting middleware directly for queued jobs.
 In `AppServiceProvider::boot()`:
 
 ```php
-namespace AppProviders;
+namespace App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Support\Facades\RateLimiter;
-use IlluminateSupportServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -43,10 +43,10 @@ class AppServiceProvider extends ServiceProvider
 ```php
 namespace App\Jobs;
 
-use IlluminateBusQueueable;
-use IlluminateContractsQueueShouldQueue;
-use IlluminateFoundationBusDispatchable;
-use IlluminateQueueInteractsWithQueue;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\Middleware\RateLimited;
 
 class SyncShopifyOrdersJob implements ShouldQueue

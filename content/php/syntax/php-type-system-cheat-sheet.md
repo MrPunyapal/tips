@@ -11,7 +11,7 @@ subcategory: "Syntax"
 
 > A reference guide to scalar, compound, special, user-defined, union, and intersection types in modern PHP.
 
-PHP features a gradual and expressive type system. From scalar type declarations introduced in PHP 7 to union types in PHP 8.0, intersection types in PHP 8.1, and standalone `true`, `false`, and `null` types in PHP 8.2, PHP provides robust type safety at runtime and compile time.
+PHP features a gradual and expressive type system. From scalar type declarations introduced in PHP 7 to union types in PHP 8.0, intersection types in PHP 8.1, and standalone `true`, `false`, and `null` types in PHP 8.2, PHP provides reliable type safety at runtime and compile time.
 
 ---
 
@@ -187,4 +187,4 @@ function processBatch(iterable $items): void
 - Use `void` when no value is returned, and `never` for methods that always terminate or throw.
 - Use `static` return types for fluent chaining and late static binding in parent classes.
 - Use Union types (`int|string`) and Intersection types (`InterfaceA&InterfaceB`) for precise polymorphic contracts.
-- Use `iterable` to accept both arrays and `Traversable` collections seamlessly.
+- Use `iterable` to accept both arrays and `Traversable` collections directly.
