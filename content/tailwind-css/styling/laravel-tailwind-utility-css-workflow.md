@@ -11,12 +11,16 @@ subcategory: "Styling"
 
 > Leverage Tailwind CSS utility classes to compose custom responsive designs directly in HTML without CSS stylesheet bloat.
 
-Writing custom CSS classes for every UI component leads to bloated stylesheet files. Tailwind CSS provides utility classes that streamline responsive styling directly inside templates.
+Writing custom CSS classes for every UI component leads to large stylesheets and naming exhaustion. Tailwind CSS provides utility classes that streamline responsive styling directly inside templates.
+
+---
+
+## Utility-First Component Example
 
 ```html
 <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
   <div class="shrink-0">
-    <img class="h-12 w-12" src="/img/logo.svg" alt="Logo">
+    <img class="h-12 w-12" src="/img/avatar.svg" alt="Avatar">
   </div>
   <div>
     <div class="text-xl font-medium text-black">Punyapal Shah</div>
@@ -25,6 +29,10 @@ Writing custom CSS classes for every UI component leads to bloated stylesheet fi
 </div>
 ```
 
-- Eliminates named CSS class abstraction debates
-- Purges unused CSS styles automatically in production builds
-- makes sure consistent spacing, typography, and color tokens
+---
+
+## Key Benefits
+
+- **No Named Abstraction Clutter**: Eliminates arbitrary CSS class naming debates like `.card-author-wrapper`.
+- **Automatic Dead Code Elimination**: Build tools automatically purge unused utility classes, emitting tiny production CSS bundles.
+- **Consistent Design System**: Enforces standard spacing, typography, and color tokens defined in your project configuration.

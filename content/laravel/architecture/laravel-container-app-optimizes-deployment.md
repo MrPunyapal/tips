@@ -45,4 +45,4 @@ Now running `php artisan optimize` in your CI/CD pipeline automatically compiles
 
 - Integrates custom caching commands into standard Laravel deployment lifecycles.
 - Automatically handles cache clearing with `php artisan optimize:clear`.
-- Keeps deployment deployment scripts clean and unified.
+- Keeps deployment scripts clean and unified.

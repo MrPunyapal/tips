@@ -11,23 +11,53 @@ subcategory: "HTTP & API"
 
 > Prefix any application class import with Facades\ to instantly treat it as a mockable Laravel Facade.
 
-Creating explicit Facade classes for internal services adds boilerplate. Laravel's Real-Time Facades generate mockable facades on the fly by prefixing namespace imports with Facades\.
+Creating explicit Facade classes for internal application services adds unnecessary boilerplate files.
+
+Laravel's Real-Time Facades generate mockable facades on the fly simply by prefixing the namespace import with `Facades\`.
+
+---
+
+## 1. Controller Usage
 
 ```php
 namespace App\Http\Controllers;
 
-// Import class with Facades\ prefix for instant facade capabilities
+// Import any internal service with the Facades\ prefix
 use Facades\App\Services\PaymentGateway;
 
 class CheckoutController
 {
     public function store()
     {
-        PaymentGateway::charge(100); // Executed as real-time facade
+        // Calls methods statically with container resolution
+        PaymentGateway::charge(100);
     }
 }
 ```
 
-- Eliminates boilerplate dedicated Facade class files
-- Allows instant test mocking via PaymentGateway::shouldReceive()
-- Resolves underlying service class instance from container automatically
+---
+
+## 2. Mocking in Tests
+
+The main superpower of real-time facades is effortless test mocking without container bindings:
+
+```php
+use Facades\App\Services\PaymentGateway;
+
+it('processes checkout successfully', function () {
+    PaymentGateway::shouldReceive('charge')
+        ->once()
+        ->with(100)
+        ->andReturn(true);
+
+    $this->post('/checkout')->assertOk();
+});
+```
+
+---
+
+## Key Benefits
+
+- **Zero Boilerplate**: No need to create a dedicated `app/Facades/PaymentGateway.php` file.
+- **Instant Testability**: Call `shouldReceive()` or `spy()` directly on the imported real-time facade.
+- **Container Resolution**: Laravel resolves the real underlying instance from the service container when not mocked.

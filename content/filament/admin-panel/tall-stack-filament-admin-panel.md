@@ -11,24 +11,44 @@ subcategory: "Admin Panel"
 
 > Use FilamentPHP to build full-featured administrative panels, forms, and tables using Livewire and Alpine.js.
 
-Building custom admin dashboards from scratch requires writing repetitive Blade components, Livewire tables, and form validation. Filament provides pre-built TALL stack components out of the box.
+Building custom admin dashboards from scratch requires writing repetitive Blade components, Livewire tables, and form validation.
+
+Filament provides pre-built, production-ready TALL stack components out of the box.
+
+---
+
+## Form Schema Example
+
+Define typed form schemas inside your Filament Resource classes:
 
 ```php
+namespace App\Filament\Resources;
+
+use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Select;
 
 public static function form(Form $form): Form
 {
     return $form->schema([
-        TextInput::make('name')->required(),
-        Select::make('role')->options([
-            'admin' => 'Admin',
-            'editor' => 'Editor',
-        ]),
+        TextInput::make('name')
+            ->required()
+            ->maxLength(255),
+
+        Select::make('role')
+            ->options([
+                'admin'  => 'Administrator',
+                'editor' => 'Editor',
+            ])
+            ->required(),
     ]);
 }
 ```
 
-- First-party TALL stack admin framework built on Livewire and Alpine.js
-- Includes form builders, data tables, notifications, and dashboard widgets
-- Extremely extensible via custom Livewire components
+---
+
+## Core Features
+
+- **TALL Stack Native**: Built directly on Livewire, Alpine.js, Tailwind CSS, and Laravel.
+- **Pre-Built Primitives**: Ships with form builders, interactive data tables, notifications, modal drawers, and chart widgets.
+- **Extensible**: Easily embed custom Livewire components and Blade views inside any Filament page.

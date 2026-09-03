@@ -9,20 +9,52 @@ subcategory: "Eloquent"
 
 # Dynamically Append Model Casts with mergeCasts()
 
-> Use mergeCasts() to dynamically append attribute casting rules to Eloquent model instances at runtime.
+> Use mergeCasts() to dynamically append attribute casting rules to Eloquent model instances or inside reusable model traits.
 
-When working with dynamic attributes or traits on models, hardcoding all casts in $casts can be inflexible. Use mergeCasts() to add casting definitions dynamically.
+When developing reusable model traits or packages, hardcoding cast definitions in the host model's `protected function casts(): array` can be brittle.
+
+Eloquent provides `mergeCasts()` to dynamically append cast definitions at runtime without overwriting existing casts.
+
+---
+
+## 1. Usage Inside Reusable Model Traits
+
+The canonical use case for `mergeCasts()` is inside trait initialization hooks (`initialize{TraitName}`):
+
+```php
+namespace App\Models\Concerns;
+
+trait HasPreferences
+{
+    public function initializeHasPreferences(): void
+    {
+        // Appends to the host model's casts without touching existing definitions
+        $this->mergeCasts([
+            'preferences' => 'array',
+            'theme_color' => 'string',
+        ]);
+    }
+}
+```
+
+---
+
+## 2. Dynamic Runtime Casts
 
 ```php
 use App\Models\User;
 
 $user = new User();
+
+// Add temporary cast on an ad-hoc instance
 $user->mergeCasts([
-    'options' => 'array',
-    'verified_at' => 'datetime',
+    'dynamic_metadata' => 'json',
 ]);
 ```
 
-- Appends cast rules to existing model casts dynamically at runtime
-- Ideal for reusable model traits that require specific attribute casts
-- Does not overwrite existing cast declarations for un-specified attributes
+---
+
+## Key Benefits
+
+- **Non-Destructive**: Merges new cast rules into existing definitions without resetting previously declared attributes.
+- **Trait Architecture**: Enables traits to supply their own casting requirements cleanly via `initializeTraitName()` methods.

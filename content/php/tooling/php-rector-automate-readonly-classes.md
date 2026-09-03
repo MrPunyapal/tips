@@ -11,7 +11,15 @@ subcategory: "Tooling"
 
 > Use Rector rules to automatically convert immutable DTOs and value objects into native PHP 8.2 readonly classes.
 
-Manually adding readonly keywords across dozens of data transfer objects is repetitive. Rector automates upgrading class properties and class declarations across codebase suites.
+Manually adding `readonly` keywords across dozens of data transfer objects (DTOs) and value objects is repetitive.
+
+Rector automates upgrading class declarations across your codebase using AST refactoring.
+
+---
+
+## Configuration
+
+Register `ReadOnlyClassRector` in `rector.php`:
 
 ```php
 // rector.php
@@ -24,6 +32,34 @@ return RectorConfig::configure()
     ]);
 ```
 
-- Converts immutable classes to native PHP 8.2 readonly class declarations
-- Enforces immutability at compiler level for all class properties
-- Eliminates boilerplate docblock annotations and manual checks
+---
+
+## What It Refactors
+
+```php
+// Before Rector (individual readonly properties):
+class UserData
+{
+    public function __construct(
+        public readonly string $name,
+        public readonly string $email,
+    ) {}
+}
+
+// After Rector (PHP 8.2+ native readonly class):
+readonly class UserData
+{
+    public function __construct(
+        public string $name,
+        public string $email,
+    ) {}
+}
+```
+
+---
+
+## Key Benefits
+
+- **Compiler-Level Immutability**: Enforces that all properties cannot be modified after instantiation.
+- **Cleaner Constructors**: Removes repetitive `readonly` property declarations in favor of a single class-level keyword.
+- **Safe Automation**: Rector verifies property usage before promoting classes, ensuring mutable entities are not broken.

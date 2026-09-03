@@ -11,17 +11,32 @@ subcategory: "Queue"
 
 > Use Artisan::queue() to push long-running Artisan commands to background queues instead of blocking HTTP requests.
 
-Running heavy Artisan commands like database backups or report generators inside HTTP controller requests blocks the user web server thread. Artisan::queue() dispatches the command to queue workers.
+Running heavy Artisan commands (such as generating bulk reports, clearing large cache stores, or sending system audits) inside HTTP controller requests blocks the user web server thread.
+
+`Artisan::queue()` dispatches the command directly to background queue workers.
+
+---
+
+## Code Example
 
 ```php
 use Illuminate\Support\Facades\Artisan;
 
-// Pushes Artisan command execution to default background queue
+// 1. Pushes command execution to default background queue
 Artisan::queue('reports:generate', [
     '--user' => $user->id,
 ]);
+
+// 2. Specify dedicated connection and queue worker
+Artisan::queue('reports:generate', ['--user' => $user->id])
+    ->onConnection('redis')
+    ->onQueue('exports');
 ```
 
-- Dispatches command execution as a background queue job
-- Prevents HTTP request timeouts during long-running tasks
-- Accepts command arguments and option arrays
+---
+
+## Key Benefits
+
+- **Non-Blocking**: Prevents HTTP timeouts by running commands asynchronously in background queue workers.
+- **Routing Control**: Chain `onConnection()` and `onQueue()` to route tasks to dedicated worker pools.
+- **Argument Support**: Accepts command arguments and flag options in standard key-value arrays.

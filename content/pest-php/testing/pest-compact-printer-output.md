@@ -9,15 +9,40 @@ subcategory: "Testing"
 
 # Enable Compact Test Output Printer in Pest
 
-> Use the --compact flag or configure compact output in pest.php for minimal single-character test progress indicators.
+> Use the --compact flag or set it in your composer.json test script for minimal single-character test progress indicators.
 
-When running large test suites with hundreds of tests, verbose output fills terminal buffers. Enabling compact printer output displays dots and characters for fast console feedback.
+When running large test suites with hundreds of test cases, verbose multi-line output fills your terminal scrollback buffer.
+
+Pest provides a compact output mode that displays concise single-character indicators for fast visual feedback.
+
+---
+
+## 1. Run on Demand via CLI
 
 ```bash
-# Enable compact output via CLI
 ./vendor/bin/pest --compact
 ```
 
-- Displays minimal test progress indicators to reduce console output clutter
-- Highlights failures and errors prominently with detailed tracebacks
-- Saves terminal scrollback memory during long test suite runs
+---
+
+## 2. Set as Default in composer.json
+
+To make compact output the default for your team and CI runs, configure it inside `composer.json`:
+
+```json
+{
+    "scripts": {
+        "test": "pest --compact"
+    }
+}
+```
+
+Now running `composer test` executes Pest in compact mode automatically.
+
+---
+
+## Key Benefits
+
+- **Minimal Terminal Clutter**: Renders small single-character status indicators (`.` for passed, `F` for failed) instead of multi-line test names.
+- **Immediate Failure Details**: Test failures, assertion errors, and stack traces are still rendered prominently at the end of the run.
+- **Scrollback Efficiency**: Keeps terminal buffers clean during extensive test suite runs.

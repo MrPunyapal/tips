@@ -11,16 +11,27 @@ subcategory: "Configuration"
 
 > Laravel's AgentDetector detects whether an AI coding agent is interacting with your app, and PAO optimizes CLI output for agents.
 
-AI agents are part of modern dev workflows, and Laravel provides first-party tools to handle them cleanly by detecting agents and switching terminal outputs to compact JSON.
+AI coding agents (Cursor, Claude Code, Devin) are now part of regular development workflows. Laravel provides first-party tools to detect agents and optimize terminal output for LLM parsing.
+
+---
+
+## Agent Detection
 
 ```php
 use Laravel\AgentDetector\Facades\AgentDetector;
 
-if (AgentDetector::detect()->isAgent) {
-    logger()->info('AI agent detected', ['agent' => AgentDetector::detect()->name]);
+$detection = AgentDetector::detect();
+
+if ($detection->isAgent) {
+    // Inspect agent name (e.g. 'claude-code', 'cursor', 'devin')
+    logger()->info('AI agent session', ['agent' => $detection->name]);
 }
 ```
 
-- AgentDetector ships with PAO (laravel/pao) by default in new apps
-- Detects agents via environment variables and file markers
-- PAO replaces verbose CLI output with compact JSON for agents
+---
+
+## How PAO Works
+
+- **First-Party**: Ships with PAO (`laravel/pao`) included by default in new Laravel applications.
+- **Output Optimization**: PAO automatically switches verbose Artisan CLI output into compact JSON when an agent is detected.
+- **Human Invariant**: Human developers see standard terminal formatting with zero workflow change.

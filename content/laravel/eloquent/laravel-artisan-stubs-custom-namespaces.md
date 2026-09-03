@@ -11,13 +11,46 @@ subcategory: "Eloquent"
 
 > Publish and customize Artisan generator stubs using php artisan stub:publish to enforce custom code conventions across your team.
 
-Standard php artisan make:controller or make:model commands generate default templates. Running stub:publish exports stub files to stubs/ so you can customize scaffolded code.
+Standard `php artisan make:controller` or `make:model` commands generate default framework templates.
+
+Running `stub:publish` exports these blueprint files to a local `stubs/` directory, allowing you to enforce project-specific conventions automatically.
+
+---
+
+## 1. Publish Stubs
 
 ```bash
-# Publish default Artisan code stubs to stubs/ directory
 php artisan stub:publish
 ```
 
-- Exports code stubs to stubs/ folder for custom modification
-- Enforces team code standards (strict types, custom traits, imports)
-- Automatically used by artisan make:* commands once published
+This exports all generator stubs into your application root's `stubs/` directory.
+
+---
+
+## 2. Customize Templates (e.g. stubs/model.stub)
+
+Edit any stub file to enforce strict types, default properties, or custom traits:
+
+```php
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    // Enforce un-guarded models by default across the team
+    protected $guarded = [];
+}
+```
+
+---
+
+## Key Benefits
+
+- **Team Consistency**: Every developer running `make:model` or `make:controller` receives the standardized company template.
+- **Zero Friction**: Automatically picked up by Artisan without requiring any custom command flags or configuration files.

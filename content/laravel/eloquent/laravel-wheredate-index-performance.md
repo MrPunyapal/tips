@@ -11,15 +11,34 @@ subcategory: "Eloquent"
 
 > whereDate() wraps the column in a DATE() function, preventing the database from using indexes. Use whereBetween() with full timestamps for index-friendly filtering.
 
-Filtering records with whereDate() forces the database to evaluate the DATE() function on every row, bypassing indexes. Use whereBetween() with explicit timestamps.
+Filtering records with `whereDate()` forces the database engine to evaluate the `DATE()` function on every single row in the table, completely bypassing B-Tree indexes and causing slow full-table scans.
+
+---
+
+## Before & After
 
 ```php
+use App\Models\Order;
+use Carbon\Carbon;
+
+$date = Carbon::parse('2026-03-12');
+
+// ❌ Avoid: Wraps column in DATE() function; bypasses indexes
+$orders = Order::whereDate('created_at', $date)->get();
+// Generated SQL: select * from `orders` where date(`created_at`) = '2026-03-12'
+
+// ✅ Recommended: Uses B-Tree index range scan
 $orders = Order::whereBetween('created_at', [
-    $date . ' 00:00:00',
-    $date . ' 23:59:59',
+    $date->copy()->startOfDay(),
+    $date->copy()->endOfDay(),
 ])->get();
+// Generated SQL: select * from `orders` where `created_at` between '2026-03-12 00:00:00' and '2026-03-12 23:59:59'
 ```
 
-- whereBetween() enables B-Tree index range scans
-- Avoids wrapping indexed columns in SQL functions
-- Crucial for high-traffic tables with millions of rows
+---
+
+## Key Benefits
+
+- **Index Utilization**: Allows MySQL and PostgreSQL to perform fast index range scans rather than full table scans.
+- **High Throughput**: Critical for performance on tables containing millions of rows.
+- **Timezone Safety**: Explicit start and end boundaries avoid edge-case shifts when dealing with UTC storage.

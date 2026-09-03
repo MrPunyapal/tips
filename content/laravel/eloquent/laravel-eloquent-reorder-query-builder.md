@@ -11,17 +11,32 @@ subcategory: "Eloquent"
 
 > Use reorder() to clear previous orderBy clauses from a query builder before applying new sorting constraints.
 
-When modifying existing query builders or model scopes that already contain orderBy clauses, appending another orderBy appends a secondary sort. reorder() strips existing ordering rules.
+When working with base query scopes or repository methods that already include an `orderBy` clause, calling `orderBy()` again appends a secondary sort rather than replacing the primary sort.
+
+`reorder()` removes previously assigned order clauses cleanly.
+
+---
+
+## Code Examples
 
 ```php
 use App\Models\User;
 
+// Base query has default alphabetical ordering
 $query = User::orderBy('name', 'asc');
 
-// Replaces 'name' sorting with 'created_at' sorting
-$users = $query->reorder('created_at', 'desc')->get();
+// 1. Completely remove all ORDER BY clauses (runs without order constraints)
+$unordered = (clone $query)->reorder()->get();
+
+// 2. Clear previous sort and apply new ordering
+$recentUsers = $query->reorder('created_at', 'desc')->get();
+// SQL: select * from `users` order by `created_at` desc
 ```
 
-- Strips all existing orderBy clauses from the query builder
-- Accepts optional new column and direction arguments to re-apply sorting
-- Essential when overriding default sorting rules defined in model scopes
+---
+
+## Key Benefits
+
+- **Scope Overrides**: Safely override hardcoded sorting rules defined in model global or local query scopes.
+- **Clean Reset**: Calling `->reorder()` without arguments resets the query's internal `$orders` array to empty.
+- **Direction Flexibility**: Accepts new column and direction arguments (`'asc'` or `'desc'`) in a single fluent call.

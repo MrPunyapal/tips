@@ -1,6 +1,6 @@
 ---
 category: "Laravel"
-tags: ["Laravel", "Carbon", "Dates"]
+tags: ["Laravel", "Carbon", "Dates", "Rector", "Refactoring"]
 date: "2026-09-03"
 author: "Punyapal Shah"
 author_url: "https://x.com/MrPunyapal"
@@ -9,104 +9,112 @@ subcategory: "Utilities"
 
 # Use Immutable Dates by Default in Laravel
 
-> Make Laravel use `CarbonImmutable` by default so date calculations don't unexpectedly modify the original date.
+> Configure Laravel's Date facade to use CarbonImmutable by default, and automate migrating legacy Carbon calls with Rector.
 
-Carbon dates are mutable by default, so date operations can unexpectedly change the original instance.
+By default, Carbon instances in PHP are mutable. Modifying a date instance unexpectedly alters the original variable:
 
 ```php
 $date = now();
 
 $tomorrow = $date->addDay();
 
-echo $date->toDateString();      // 2026-09-04
-echo $tomorrow->toDateString();  // 2026-09-04
+// Both variables now point to tomorrow!
+echo $date->toDateString();     // 2026-09-04
+echo $tomorrow->toDateString(); // 2026-09-04
 ```
 
-`CarbonImmutable` returns a new instance instead:
+---
+
+## 1. Configure the Date Facade
+
+In `AppServiceProvider::boot()`, instruct Laravel's `Date` factory to generate `CarbonImmutable` instances:
 
 ```php
-use Carbon\CarbonImmutable;
+namespace App\Providers;
 
-$date = CarbonImmutable::now();
-
-$tomorrow = $date->addDay();
-
-echo $date->toDateString();      // 2026-09-03
-echo $tomorrow->toDateString();  // 2026-09-04
-```
-
-## Make It the Laravel Default
-
-You can configure Laravel's date factory to use `CarbonImmutable`:
-
-```php
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\ServiceProvider;
 
-Date::use(CarbonImmutable::class);
-```
-
-Now existing helpers such as `now()` use immutable dates:
-
-```php
-$date = now();
-
-$tomorrow = $date->addDay();
-
-echo $date->toDateString();      // 2026-09-03
-echo $tomorrow->toDateString();  // 2026-09-04
-```
-
-This means you can keep using Laravel's normal date helpers without manually calling `CarbonImmutable::now()` everywhere.
-
-## Migrating an Existing Codebase
-
-When moving an existing application to immutable dates, look for code that relies on Carbon mutating the original instance.
-
-```php
-$date = now();
-
-$date->addDay();
-
-echo $date->toDateString();  // Mutable: 2026-09-04
-```
-
-With immutable dates, assign the returned instance when you want to change the variable:
-
-```php
-$date = now();
-
-$date = $date->addDay();
-
-echo $date->toDateString();  // 2026-09-04
-```
-
-For reusable code, prefer `CarbonInterface` when you do not specifically need mutable `Carbon`:
-
-```php
-use Carbon\CarbonInterface;
-
-function processDate(CarbonInterface $date): void
+class AppServiceProvider extends ServiceProvider
 {
-    // ...
+    public function boot(): void
+    {
+        Date::use(CarbonImmutable::class);
+    }
 }
 ```
 
-### Using Rector
+Once configured, all calls through the `Date` facade as well as Laravel helpers (`now()`, `today()`) return immutable instances:
 
-If you are migrating a large codebase, Rector can help with automated refactoring, but the exact Carbon migration rule should be checked against the Rector version installed in the project rather than assuming a rule name.
+```php
+$date = now();
 
-You can inspect the rules available to your project with:
+$tomorrow = $date->addDay();
 
-```bash
-vendor/bin/rector list-rules
+echo $date->toDateString();     // 2026-09-03 (original remains unchanged)
+echo $tomorrow->toDateString(); // 2026-09-04
 ```
 
-Rector also provides an online rule finder for discovering and verifying available rules.
+---
 
-The important distinction is:
+## 2. The Direct Carbon Trap
 
-- **Rector** can help automate repetitive migration work.
-- **`Date::use(CarbonImmutable::class)`** makes immutable dates the Laravel default.
+While `Date::use(CarbonImmutable::class)` secures `now()`, `today()`, and `Date::now()`, any code directly calling `Carbon::now()` or `Carbon::parse()` bypasses Laravel's date factory and remains mutable:
 
-Before enabling this globally, check application and package code that depends on mutable Carbon behavior.
+```php
+use Carbon\Carbon;
+
+// ❌ Bypasses Laravel's Date factory; remains mutable
+$date = Carbon::parse('2026-09-03');
+
+// ✅ Routes through Date factory; returns CarbonImmutable
+$date = Date::parse('2026-09-03');
+```
+
+---
+
+## 3. Automate Codebase Migration with Rector
+
+To migrate an existing codebase so all static Carbon calls route through Laravel's `Date` facade, use [`CarbonToDateFacadeRector`](https://getrector.com/rule-detail/carbon-to-date-facade-rector) from `rector-laravel`:
+
+```bash
+composer require --dev driftingly/rector-laravel
+```
+
+Register the rule in `rector.php`:
+
+```php
+// rector.php
+use Rector\Config\RectorConfig;
+use RectorLaravel\Rector\StaticCall\CarbonToDateFacadeRector;
+
+return RectorConfig::configure()
+    ->withRules([
+        CarbonToDateFacadeRector::class,
+    ]);
+```
+
+### What Rector Automatically Transforms
+
+```php
+// Before Rector:
+use Carbon\Carbon;
+
+$now = Carbon::now();
+$date = Carbon::parse('2026-01-01');
+
+// After Rector:
+use Illuminate\Support\Facades\Date;
+
+$now = Date::now();
+$date = Date::parse('2026-01-01');
+```
+
+---
+
+## Key Benefits
+
+- **Predictable Date Math**: Operations like `addDay()` or `subMonth()` always return new instances without mutating source dates.
+- **Framework Uniformity**: Using `Date::use(CarbonImmutable::class)` guarantees all Eloquent timestamps, cast dates, and helpers share the same immutable behavior.
+- **Automated Modernization**: `CarbonToDateFacadeRector` removes manual search-and-replace across legacy controllers and services.
