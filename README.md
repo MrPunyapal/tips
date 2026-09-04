@@ -15,14 +15,14 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore **328** engineering tips directly in the repository by category:
+Explore **329** engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
-- **Laravel (283)**
+- **Laravel (284)**
   - [Architecture (9)](content/laravel/architecture)
   - [Blade (8)](content/laravel/blade)
   - [Cache (2)](content/laravel/cache)
-  - [Collections (14)](content/laravel/collections)
+  - [Collections (15)](content/laravel/collections)
   - [Configuration (8)](content/laravel/configuration)
   - [Database (16)](content/laravel/database)
   - [Eloquent (99)](content/laravel/eloquent)
