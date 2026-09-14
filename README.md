@@ -1,6 +1,6 @@
 # Laravel Tips
 
-Curated Laravel, PHP, and Pest engineering tips by [Punyapal Shah](https://mrpunyapal.dev).
+Curated Laravel, PHP, and Pest engineering tips by [Punyapal Shah](https://mrpunyapal.dev/) and the community.
 
 ## Documentation Site
 
