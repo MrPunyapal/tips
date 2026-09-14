@@ -457,16 +457,16 @@
         },
         {
             "name": "mrpunyapal/docsmith",
-            "version": "v0.5.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MrPunyapal/docsmith.git",
-                "reference": "aacb0a1d39e1efa5bd708ad11f723a5d740a1a9c"
+                "reference": "93cb207ec12e6d327ab6fb1084358481f88ae3da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MrPunyapal/docsmith/zipball/aacb0a1d39e1efa5bd708ad11f723a5d740a1a9c",
-                "reference": "aacb0a1d39e1efa5bd708ad11f723a5d740a1a9c",
+                "url": "https://api.github.com/repos/MrPunyapal/docsmith/zipball/93cb207ec12e6d327ab6fb1084358481f88ae3da",
+                "reference": "93cb207ec12e6d327ab6fb1084358481f88ae3da",
                 "shasum": ""
             },
             "require": {
@@ -501,7 +501,7 @@
             "description": "Craft static documentation sites from Markdown with minimal setup.",
             "support": {
                 "issues": "https://github.com/MrPunyapal/docsmith/issues",
-                "source": "https://github.com/MrPunyapal/docsmith/tree/v0.5.1"
+                "source": "https://github.com/MrPunyapal/docsmith/tree/v0.5.2"
             },
             "funding": [
                 {
@@ -509,7 +509,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-08-29T15:03:23+00:00"
+            "time": "2026-09-14T17:45:03+00:00"
         },
         {
             "name": "mrpunyapal/git-reader",
