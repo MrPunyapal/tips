@@ -54,6 +54,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -62,7 +64,7 @@ jobs:
           tools: composer
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+        run: composer install --prefer-dist --optimize-autoloader --no-interaction
 
       - name: Build documentation site
         run: php build-docs.php

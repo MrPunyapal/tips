@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b9f275a6473b71df8ebef60fb836308",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "32ea982090b97814cd3c95b8b8e97e8c",
+    "packages": [
         {
             "name": "dflydev/dot-access-data",
             "version": "v3.0.3",
@@ -2020,6 +2019,7 @@
             "time": "2026-08-24T18:07:49+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {},
