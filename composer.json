@@ -1,0 +1,11 @@
+{
+    "name": "mrpunyapal/tips",
+    "description": "Curated Laravel, PHP, and Pest tips by Punyapal Shah.",
+    "type": "project",
+    "require-dev": {
+        "mrpunyapal/docsmith": "^0.5.1"
+    },
+    "scripts": {
+        "docs:build": "@php build-docs.php"
+    }
+}
