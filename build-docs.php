@@ -16,5 +16,4 @@ Docsmith::make()
     ->repositoryUrl('https://github.com/MrPunyapal/tips')
     ->baseUrl('/tips/')
     ->editPrefix('content/')
-    ->rightSidebar()
     ->build();
