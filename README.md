@@ -15,51 +15,36 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore **330** engineering tips directly in the repository by category:
+Explore **63** engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
-- **Laravel (285)**
-  - [Architecture (10)](content/laravel/architecture)
-  - [Blade (8)](content/laravel/blade)
-  - [Cache (2)](content/laravel/cache)
-  - [Collections (15)](content/laravel/collections)
-  - [Configuration (8)](content/laravel/configuration)
-  - [Database (16)](content/laravel/database)
-  - [Eloquent (99)](content/laravel/eloquent)
-  - [Events (3)](content/laravel/events)
-  - [HTTP & API (22)](content/laravel/http-api)
-  - [Mail (1)](content/laravel/mail)
-  - [Queue (18)](content/laravel/queue)
-  - [Routing (17)](content/laravel/routing)
-  - [Storage (2)](content/laravel/storage)
-  - [Testing (12)](content/laravel/testing)
-  - [Utilities (33)](content/laravel/utilities)
-  - [Validation (19)](content/laravel/validation)
-- **PHP (22)**
-  - [Basics (4)](content/php/basics)
+- **Laravel (43)**
+  - [Architecture (3)](content/laravel/architecture)
+  - [Collections (1)](content/laravel/collections)
+  - [Configuration (3)](content/laravel/configuration)
+  - [Database (4)](content/laravel/database)
+  - [Eloquent (17)](content/laravel/eloquent)
+  - [Events (1)](content/laravel/events)
+  - [HTTP & API (2)](content/laravel/http-api)
+  - [Queue (5)](content/laravel/queue)
+  - [Testing (5)](content/laravel/testing)
+  - [Utilities (1)](content/laravel/utilities)
+  - [Validation (1)](content/laravel/validation)
+- **PHP (10)**
+  - [Basics (3)](content/php/basics)
   - [Performance (1)](content/php/performance)
-  - [Strings (1)](content/php/strings)
-  - [Syntax (8)](content/php/syntax)
-  - [Tooling (8)](content/php/tooling)
-- **Git (7)**
+  - [Tooling (6)](content/php/tooling)
+- **Git (4)**
   - [Github Actions (4)](content/git/github-actions)
-  - [Workflow (3)](content/git/workflow)
-- **Pest PHP (5)**
-  - [Plugins (2)](content/pest-php/plugins)
-  - [Testing (3)](content/pest-php/testing)
-- **CSS (3)**
-  - [Styling (3)](content/css/styling)
-- **Filament (2)**
-  - [Admin Panel (2)](content/filament/admin-panel)
-- **Javascript (2)**
-  - [Frameworks (2)](content/javascript/frameworks)
+- **CSS (2)**
+  - [Styling (2)](content/css/styling)
 - **Livewire (2)**
   - [Components (1)](content/livewire/components)
   - [Performance (1)](content/livewire/performance)
 - **MySQL (1)**
   - [Queries (1)](content/mysql/queries)
-- **Tailwind CSS (1)**
-  - [Styling (1)](content/tailwind-css/styling)
+- **Pest PHP (1)**
+  - [Plugins (1)](content/pest-php/plugins)
 <!-- TIPS_INDEX:END -->
 
 ## Contributing
