@@ -15,15 +15,15 @@ Practical, bite-sized engineering tips covering Laravel, PHP, and the wider ecos
 
 ## Category & Subcategory Directory Index
 
-Explore **64** engineering tips directly in the repository by category:
+Explore **65** engineering tips directly in the repository by category:
 
 <!-- TIPS_INDEX:START -->
-- **Laravel (43)**
+- **Laravel (44)**
   - [Architecture (3)](content/laravel/architecture)
   - [Collections (1)](content/laravel/collections)
   - [Configuration (3)](content/laravel/configuration)
   - [Database (4)](content/laravel/database)
-  - [Eloquent (17)](content/laravel/eloquent)
+  - [Eloquent (18)](content/laravel/eloquent)
   - [Events (1)](content/laravel/events)
   - [HTTP & API (2)](content/laravel/http-api)
   - [Queue (5)](content/laravel/queue)
