@@ -1,13 +1,13 @@
 # Laravel Tips
 
-Curated Laravel, PHP, and Pest engineering tips by [Punyapal Shah](https://mrpunyapal.dev/) and the community.
+This repository contains the Markdown source files for **Laravel Tips** published at [mrpunyapal.dev/tips](https://mrpunyapal.dev/tips).
 
-## Documentation Site
+## Website
 
-- **Live Documentation**: [https://mrpunyapal.github.io/tips/](https://mrpunyapal.github.io/tips/)
-- **Built with**: [DocSmith](https://github.com/MrPunyapal/docsmith) static documentation generator
+Published interactive version: [https://mrpunyapal.dev/tips](https://mrpunyapal.dev/tips)
+RSS Feed: [https://mrpunyapal.dev/tips/feed.xml](https://mrpunyapal.dev/tips/feed.xml)
 
-The interactive documentation website is statically generated directly from the Markdown files maintained in this repository and deployed to GitHub Pages.
+The website is statically generated directly from the Markdown files maintained in this repository.
 
 ## What You'll Find
 
